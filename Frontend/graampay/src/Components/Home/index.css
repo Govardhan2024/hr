@@ -1,0 +1,254 @@
+.main-home-page{
+    height: calc(100vh - 100px); /* Adjust 100px according to your layout */
+    overflow-y: scroll; /* Enable vertical scrolling */
+    padding: 20px; 
+    scroll-behavior: smooth;
+
+    
+}
+.main-home-page::-webkit-scrollbar {
+    display: none; /* Hide scrollbar */
+}
+.flex-dashboard-text{
+    display: flex;
+    align-items: center;
+    gap:20px;
+    
+}
+.dashborad-text{
+    margin-left: 20px;
+    margin-top: 55px;
+    line-height: 10%;
+}
+.main-home-head{
+    font-size: 20px;
+    font-weight: 500;
+    color: #555555;
+}
+.viyona-text{
+    font-size: 14px;
+    font-weight: 400;
+    color: #3408A4;
+}
+.viyona-span{
+    color: #212529BF;
+    font-size: 14px;
+    font-weight: 400;
+}
+.home-main-stats-cards{
+    margin-left: 20px;
+    margin-top: 8px;
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+.first-stats-card{
+    height: 345px;
+    width: 265px;
+    border-radius: 5px;
+    background-color: #FFFFFF;
+    border: 1px solid #CFCFCF;
+    
+}
+.year-stats-card{
+    height: 345px;
+    width: 539px;
+    border-radius: 5px;
+    background-color: #FFFFFF;
+    border: 1px solid #CFCFCF;
+}
+.slary-stats-card{
+    height: 367px;
+    width: 721px;
+    border-radius: 5px;
+    background-color: #FFFFFF;
+    border: 1px solid #CFCFCF;
+    margin-bottom: 100px;
+}
+.todo-stats-card{
+    height: 367px;
+    width: 356px;
+    border-radius: 5px;
+    background-color: #FFFFFF;
+    border: 1px solid #CFCFCF;
+    margin-bottom: 100px;
+}
+.inneer-main-card{
+    display: flex;
+    flex-direction: row;
+    gap: 30px;
+    padding-top: 15px;
+    padding-left: 20px;
+}
+.inner-card{
+    width: 50px;
+    height: 50px;
+    border-radius: 6px;
+    background-color: white;
+    border: 1px solid #CFCFCF;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.inner-image{
+    height: 20px;
+    width: 14px;
+}
+.innertext{
+    font-size: 14px;
+    color: #616161;
+    font-weight: 400;
+    line-height: 1px;
+}
+.innercount{
+    font-size: 20px;
+    color: #616161;
+    font-weight: 500;
+    line-height: 0px 1px;
+}
+.main-head{
+    font-size: 20px;
+    font-weight: 500;
+    color: #757575;
+    text-align: center;
+}
+.secondcard-para{
+    font-size: 14px;
+    color: #8C9DB5;
+    font-weight: 400;
+    text-align: center;
+}
+.botom-head{
+    font-size: 16px;
+    font-weight: 400;
+    color: #757575;
+    text-align: center;
+    line-height: 0%;
+}
+.last-para{
+    font-size: 14px;
+    color: #757575;
+    font-weight: 700;
+}
+.btom-text-inner-cards{
+    display: flex;
+    align-items: center;
+}
+.bottom-text{
+    display: flex;
+    flex-direction: row;
+    padding-top: 180px;
+    gap: 18px;
+    justify-content: center;
+}
+.year-head-text{
+    font-size: 16px;
+    font-weight: 500;
+    color: #424242;
+}
+.salary-head-mani{
+    display: flex;
+    justify-content: space-between;
+    padding: 9px 20px;
+}
+.small-cards{
+    display: flex;
+    flex-direction: row;
+    gap: 9px;
+    
+}
+.salary-innertopcards{
+    width: 31px;
+    height: 23px;
+    background-color: #EEEEEE;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    outline: none;
+    border: none;
+    cursor: pointer;
+}
+.salary-innertopcards2{
+    width: 31px;
+    height: 23px;
+    background-color: #8C5CCB;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    outline: none;
+    border: none;
+    cursor: pointer;
+}
+.wHead{
+    font-size: 12px;
+    font-weight: 700;
+    color: #757575;
+    
+}
+.wHead3{
+    font-size: 12px;
+    font-weight: 700;
+    color: white;
+    
+}
+.todotext{
+    font-size: 16px;
+    padding: 9px 10px;
+}
+    
+
+@media only screen and (min-width: 1920px){
+    .first-stats-card{
+        width: 380px;
+    }
+    .year-stats-card{
+        
+        width: 750px;
+    }
+ .slary-stats-card{
+    width: 950px;
+
+ }
+ .todo-stats-card{
+    width: 570px;
+ }
+
+}
+@media only screen and (min-width: 601px) and (max-width: 767px) {
+    .dashborad-text{
+        margin-left: 0px;
+        margin-top: 55px;
+        line-height: 10%;
+    }
+    .home-main-stats-cards{
+       
+        margin-top: 8px;
+        display: flex;
+        gap: 8px;
+        flex-direction: column;
+    }
+    .first-stats-card{
+        height: 345px;
+        width: 265px;
+        border-radius: 5px;
+        background-color: #FFFFFF;
+        border: 1px solid #CFCFCF;
+        
+    }
+    .inneer-main-card{
+        display: flex;
+        flex-direction: column;
+       justify-content: center;
+    }
+.main-home-page{
+    height: calc(100vh - 100px); /* Adjust 100px according to your layout */
+    overflow-y: scroll; /* Enable vertical scrolling */
+    padding: 20px; 
+    scroll-behavior: smooth;
+}
+.slary-stats-card{
+    width: 350px;
+}
+}

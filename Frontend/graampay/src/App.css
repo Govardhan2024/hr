@@ -1,0 +1,44 @@
+/* App layout */
+.app-container {
+    display: flex;
+    height: 100vh;
+  }
+  
+  /* Sidebar and Top Navbar */
+  .navbar-container {
+    width: 250px;
+  }
+  
+  .side-navbar.collapsed {
+    width: 80px;
+  }
+  
+  .main-content {
+    flex-grow: 1;
+    padding:  20px; /* Adjust padding to account for the fixed top navbar */
+/* Adjust to align with the sidebar */
+    transition: margin-left 0.3s ease;
+  }
+  
+  .side-navbar.collapsed + .main-content {
+    margin-left: 80px;
+  }
+  
+  .top-navbar {
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    background-color: #4CAF50;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    padding: 0 20px;
+    z-index: 10;
+  }
+  
+  /* Adjust main content layout for top-navbar space */
+  .main-content {
+    margin-top: 60px;
+  }
+  
