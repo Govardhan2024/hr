@@ -1,0 +1,210 @@
+
+  /* Header styling */
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  .header h1 {
+    font-size: 24px;
+    margin: 0;
+  }
+  
+  /* Styling for the search bar */
+  .search-bar {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: 250px;
+    font-size: 16px;
+    outline: none;
+  }
+  
+  .search-bar:focus {
+    border-color: #007bff;
+  }
+  
+  /* Dropdown styling */
+  .filter-dropdown {
+    margin-bottom: 20px;
+  }
+  
+  .filter-dropdown label {
+    font-weight: bold;
+    margin-right: 10px;
+  }
+  .filter-dropdown{
+    display: flex;
+    align-items: center;
+  }
+  .label-text{
+    margin-left: 5px;
+    color: #7C7C7C;
+  }
+  .select-day {
+    padding: 8px;
+    font-size: 16px;
+    width: 58px;
+    height: 38px;
+    border: 1px solid #F0F0F0;
+    outline: none;
+
+  }
+  .select-day option{
+    font-size: 10px;
+  }
+  
+  /* Table styling */
+  .table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  .tbody td{
+    color: #7C7C7C;
+  }
+  .table th, .table td {
+    border-bottom: 1px solid #CFCFCF;
+    padding: 12px;
+    text-align: left;
+  }
+  .table thead{
+    background: linear-gradient(90deg, #3408A4 0%, #A96C5E 100%);
+  }
+  
+  .table th {
+    font-weight: bold;
+  }
+  
+
+  
+
+  /* Styles for pagination */
+.pagination {
+    display: flex;
+    justify-content: flex-end; /* Align pagination to the right */
+    margin-top: 20px; /* Space between table and pagination */
+}
+
+.previous-button{
+  background-color: #F0F0F0;
+  width: 88px;
+  height: 42px;
+  color: #7C7C7C;
+  border: none;
+  outline: none;
+  border-radius: 6px 0px 6px;
+}
+
+.number-button{
+  background-color: white;
+  color: #3408A4;
+  border: none;
+  outline: none;
+}
+
+.pagination button.active {
+    background-color: #3A0DA2;
+    border: none;
+    outline: none;
+}
+.pagination {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+  }
+  
+  .pagination-controls button {
+    margin: 0 5px;
+    padding: 5px 10px;
+  }
+  
+  .pagination-controls .active {
+    background-color: #007bff;
+    color: white;
+   
+  }
+  
+/* Styles for the entire holiday list container */
+.holiday-list-container {
+  padding: 20px;
+  background-color: #FFFFFF;
+  width: 1076px;
+  height: 792px;
+  border: 1px solid #CFCFCF;
+  border-radius: 9px;
+  margin-left: 20px;
+  margin-top: 20px;
+  
+}
+
+/* Header styling */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.header h1 {
+  font-size: 24px;
+  margin: 0;
+}
+
+/* Table styling */
+.table {
+  width: 100%; /* Adjust table width as needed */
+  border-collapse: collapse; /* Ensures borders are collapsed for a cleaner look */
+}
+
+.table thead {
+  background: linear-gradient(90deg, #3408A4 0%, #A96C5E 100%); /* Gradient background for the header */
+}
+
+.table thead th { 
+  color: white; /* Text color for better visibility against the gradient */
+  padding: 10px; /* Padding for spacing */
+  text-align: left; /* Align text to the left */
+}
+/* Responsive for smaller screens */
+@media (max-width: 768px) {
+  .header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .search-bar {
+    width: 100%;
+    margin-top: 10px;
+  }
+
+  .table th, .table td {
+    padding: 8px;
+  }
+}
+
+  
+  /* Responsive for smaller screens */
+  @media (max-width: 768px) {
+    .header {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  
+    .search-bar {
+      width: 100%;
+      margin-top: 10px;
+    }
+  
+    .table th, .table td {
+      padding: 8px;
+    }
+  }
+  
+  @media only screen and (min-width: 1920px){
+    .holiday-list-container{
+      width: 95%;
+    }
+  }

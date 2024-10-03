@@ -1,0 +1,36 @@
+/* src/Components/Unauthorized.css */
+.unauthorized-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh; /* Full viewport height */
+    /* Dark red text color */
+    font-family: Arial, sans-serif;
+    text-align: center;
+  }
+  
+  .unauthorized-title {
+    font-size: 2.5rem; /* Larger font size for title */
+    margin-bottom: 1rem; /* Space below the title */
+  }
+  
+  .unauthorized-message {
+    font-size: 1.2rem; /* Smaller font size for message */
+    margin-bottom: 2rem; /* Space below the message */
+  }
+  
+  .unauthorized-home-link {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #cce5ff; /* Light blue background for the link */
+    color: #004085; /* Dark blue text color */
+    text-decoration: none;
+    border-radius: 5px; /* Rounded corners */
+    transition: background-color 0.3s ease; /* Smooth transition */
+  }
+  
+  .unauthorized-home-link:hover {
+    background-color: #b8daff; /* Slightly darker blue on hover */
+  }
+  
