@@ -1,105 +1,29 @@
-/* .dashboard-text {
-    padding: 20px;
-    background-color: #f9f9f9;
-    border-bottom: 1px solid #ccc;
-  }
-  
-  .flex-dashboard-text {
-    display: flex;
-    align-items: center;
-  }
-  
-  .main-home-head {
-    margin-left: 10px;
-    font-size: 24px;
-    color: #3408A4;
-  }
-  
-  .viyona-text {
-    font-weight: bold;
-  }
-  
-  .viyona-span {
-    color: #666;
-  }
-  
-  .event-table-container {
-    width: 100%;
-    max-width: 1500px;
-    height: 600px;
-    margin: 20px auto;
-    font-family: Arial, sans-serif;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    overflow: hidden;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-    background-color: rgba(120, 73, 111, 0.1);
-  }
-  
-  .event-table-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 15px;
-    background-color: rgba(190, 118, 177, 0.1);
-    color: white;
-  }
-  
-  .event-table-controls button {
-    margin-left: 10px;
-    padding: 10px 15px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    background-color: #ffffff;
-    color: #b7c0b7;
-    transition: background-color 0.3s;
-  }
-  
-  .event-table-controls button:hover {
-    background-color: #e0e0e0;
-  }
-  
-  .event-table {
-    width: 100%;
-    border-collapse: collapse;
-  }
-  
-  .event-table th, .event-table td {
-    padding: 10px;
-    border: 1px solid #ccc;
-    text-align: left;
-  }
-  
-  .event-table th {
-    background-color: #b6bcb6;
-    color: white;
-  }
-  
-  .event-form {
-    display: flex;
-    margin: 20px 0;
-  }
-  
-  .event-form input {
-    flex: 1;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-  }
-  
-  .event-form button {
-    padding: 10px 15px;
-    margin-left: 10px;
-    border: none;
-    border-radius: 5px;
-    background-color: #a26b95;
-    color: white;
-    cursor: pointer;
-    transition: background-color 0.3s;
-  }
-  
-  .event-form button:hover {
-    background-color: #d69dc7;
-  }
-   */
+/* Events.css */
+
+.app-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  max-width: 800px;
+  margin: 20px auto;
+  padding: 20px;
+  background-color: #f9f9f9; /* Light background color */
+  border-radius: 10px; /* Rounded corners */
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Soft shadow */
+  font-family: 'Arial', sans-serif;
+}
+
+.app-title {
+  font-size: 2em;
+  color: #333; /* Title color */
+  margin-bottom: 20px;
+}
+
+.mbsc-calendar {
+  width: 100%; /* Full width for the calendar */
+}
+
+.mbsc-toast {
+  z-index: 1000; /* Ensures the toast appears above other elements */
+}
