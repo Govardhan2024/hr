@@ -56,7 +56,7 @@ const Holidays = () => {
             <div className='dashborad-text'>
                 <div className="flex-dashboard-text">
                     <FaArrowLeft width={12} height={14} color="#3408A4" />
-                    <h1 className="main-home-head"> Dashboard</h1>
+                    <h1 className="main-home-head"> Hoidays</h1>
                 </div>
                 <div>
                     <p><span className="viyona-text">VIYONA</span> <span className="viyona-span">/ Dashboard</span></p>

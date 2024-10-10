@@ -137,7 +137,7 @@
 .bottom-text{
     display: flex;
     flex-direction: row;
-    padding-top: 180px;
+    
     gap: 18px;
     justify-content: center;
 }

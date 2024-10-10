@@ -1,0 +1,110 @@
+  /* Container for the events section */
+.events-container {
+  padding: 20px;
+  font-family: Arial, sans-serif;
+  background-color: #f9f9f9; /* Light background color for the entire section */
+  border-radius: 8px; /* Rounded corners */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+}
+
+/* Dashboard text styles */
+.dashboard-text {
+  margin-bottom: 20px;
+}
+
+.flex-dashboard-text {
+  display: flex;
+  align-items: center;
+}
+
+.main-home-head {
+  margin-left: 10px;
+  font-size: 24px;
+  color: #3a3a3a; /* Darker text color for visibility */
+}
+
+/* Calendar container styles */
+.calendar-container {
+  margin-bottom: 20px;
+  background-color: white; /* White background for calendar */
+  border-radius: 8px; /* Rounded corners */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+}
+
+/* Styles for the react-calendar component */
+.react-calendar {
+  border: none; /* Remove default border */
+  width: 100%;
+}
+
+.react-calendar__tile {
+  padding: 10px; /* Add padding to each tile */
+  border-radius: 8px; /* Rounded corners */
+  transition: background-color 0.3s; /* Smooth transition for hover effect */
+}
+
+.react-calendar__tile:hover {
+  background-color: #e7f3ff; /* Light blue on hover */
+  cursor: pointer; /* Pointer cursor on hover */
+}
+
+.react-calendar__tile--active {
+  background-color: #007bff; /* Blue color for active day */
+  color: white; /* White text for active day */
+}
+
+.event-day {
+  background-color: #cce5ff; /* Light blue background for event days */
+  color: #004085; /* Dark blue text for event days */
+  border-radius: 8px; /* Rounded corners */
+}
+
+/* Styles for the events list */
+.events-list {
+  margin-top: 20px;
+}
+
+.events-list h2 {
+  font-size: 20px;
+  color: #343a40; /* Dark gray for the title */
+}
+
+.events-list ul {
+  list-style: none; /* Remove default list style */
+  padding: 0; /* Remove default padding */
+}
+
+.events-list li {
+  padding: 10px;
+  background-color: #ffffff; /* White background for event list items */
+  border: 1px solid #dee2e6; /* Light gray border */
+  border-radius: 4px; /* Slightly rounded corners */
+  margin-bottom: 10px; /* Space between list items */
+  transition: background-color 0.3s; /* Smooth transition for hover effect */
+}
+
+.events-list li:hover {
+  background-color: #e9ecef; /* Light gray on hover */
+  cursor: pointer; /* Pointer cursor on hover */
+}
+/* Styles for the edit and delete buttons */
+.events-list button {
+  margin-left: 10px;
+  padding: 5px 10px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.events-list button:hover {
+  background-color: #f0f0f0; /* Light gray on hover */
+}
+
+/* Styles for the editing input */
+.events-list input {
+  margin-right: 5px; /* Space between input and button */
+  padding: 5px;
+  border: 1px solid #dee2e6;
+  border-radius: 4px;
+}

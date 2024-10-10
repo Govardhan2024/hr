@@ -1,0 +1,47 @@
+/* SalaryBarGraph.css */
+.graph-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+  
+    border-radius: 8px; /* Rounded corners */
+   
+  }
+  
+  .graph-title {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: #004d40; /* Darker teal color for the title */
+    text-align: center; /* Center the title */
+  }
+  
+  .recharts-default-tooltip {
+    background-color: #ffffff; /* White background for tooltip */
+    border: 1px solid #4db6ac; /* Teal border */
+    border-radius: 4px; /* Rounded corners for tooltip */
+    padding: 10px; /* Padding inside the tooltip */
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15); /* Soft shadow */
+    transition: transform 0.2s; /* Smooth transition for tooltip */
+  }
+  
+  .recharts-tooltip-label {
+    font-weight: bold; /* Bold text for labels in tooltip */
+    color: #00796b; /* Darker green color for labels */
+  }
+  
+  .recharts-tooltip-item {
+    margin-top: 5px; /* Space between tooltip items */
+  }
+  
+  /* Add hover effect to bars */
+  .recharts-bar-rect {
+    transition: transform 0.3s, opacity 0.3s; /* Smooth animation for hover */
+  }
+  
+  .recharts-bar-rect:hover {
+    transform: scale(1.05); /* Slightly enlarge bar on hover */
+    opacity: 0.85; /* Slightly dim bar on hover */
+  }
+  

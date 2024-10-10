@@ -1,25 +1,20 @@
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
 import { IoSearch } from "react-icons/io5";
-import { FaCalendarAlt, FaSadCry } from "react-icons/fa";
+import { FaCalendarAlt } from "react-icons/fa";
 import { MdEmail } from "react-icons/md";
 import { IoIosNotifications } from "react-icons/io";
 import { CiLogin } from "react-icons/ci";
-import { useNavigate } from 'react-router-dom';
 
 import './index.css';
 
 const SideTopNavbar = () => {
-  const navigate=useNavigate();
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
   const [openAccordion, setOpenAccordion] = useState(null);
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const [activeTab, setActiveTab] = useState(0);
-  const [activeMenuItem, setActiveMenuItem] = useState('');
+  const [activeMenuItem, setActiveMenuItem] = useState(''); // New state for active menu item
   const [isDropdownVisible, setDropdownVisible] = useState(false);
-  const [accountDropdown, setAccountDropdown] = useState(false);
-  const [payrollDropdown, setPayrollDropdown] = useState(false);
-  const [reportsDropdown, setReportsDropdown] = useState(false);
 
   const tabs = ['HR', 'Project', 'Blogs'];
 
@@ -31,32 +26,25 @@ const SideTopNavbar = () => {
     setDropdownOpen(!dropdownOpen);
   };
 
-  const handleSidebarOpen = () => {
-    setIsSidebarOpen(!isSidebarOpen)
-  }
-
   const handleMenuItemClick = (item) => {
-    setActiveMenuItem(item);
+    setActiveMenuItem(item); // Set the active menu item
     setDropdownVisible(false);
-    setAccountDropdown(false);
+
+
   };
+
+
+  const handleMenuItemClickArrow = (item) => {
+    setActiveMenuItem(item);
+    setDropdownVisible(!isDropdownVisible);
+  }
 
   const handleMenuItemClickAccounts = (item) => {
     setActiveMenuItem(item);
-    setAccountDropdown(!accountDropdown);
-    setDropdownVisible(false);
-  };
+    setDropdownVisible(!isDropdownVisible);
+  }
 
-  const handleMenuItemClickPayroll = (item) => {
-    setActiveMenuItem(item);
-    setPayrollDropdown(!payrollDropdown);
-    setAccountDropdown(false);
-    setDropdownVisible(false);
-  };
-  const handleLogout = () => {
-    localStorage.removeItem('access_token'); // Remove the JWT from local storage
-    navigate('/'); // Redirect to login page
-  };
+
 
   return (
     <div className="navbar-container">
@@ -97,7 +85,7 @@ const SideTopNavbar = () => {
                 <Link onClick={handleDropdownToggle} to="/admin/profile"><li>My Profile</li></Link>
                 <Link onClick={handleDropdownToggle} to="/admin/settings"><li>Messages</li></Link>
                 <Link onClick={handleDropdownToggle} to="/admin/settings"><li>Settings</li></Link>
-                <Link onClick={handleLogout} ><li>Logout</li></Link>
+                <Link onClick={handleDropdownToggle} to="/logout"><li>Logout</li></Link>
               </ul>
             </div>
           )}
@@ -137,97 +125,142 @@ const SideTopNavbar = () => {
                 <img src='../../../public/images/blackholidays.svg' className='white-image' alt="Dashboard Icon" />
                 <li className="menu-item">Holidays</li>
               </Link>
-
               <Link className={`hover-items ${activeMenuItem === 'events' ? 'active2' : ''}`} to="/admin/events" onClick={() => handleMenuItemClick('events')}>
                 <img src='../../../public/images/calanderwhite.svg' className='color-image' alt="Dashboard Icon" />
                 <img src='../../../public/images/calandercolo.svg' className='white-image' alt="Dashboard Icon" />
                 <li className="menu-item">Events</li>
               </Link>
-
-              <Link className={`hover-items ${activeMenuItem === 'activities' ? 'active2' : ''}`} to="/admin/activities" onClick={() => handleMenuItemClick('activities')}>
+              <Link className={`hover-items ${activeMenuItem === 'activites' ? 'active2' : ''}`} to="/admin/activites" onClick={() => handleMenuItemClick('activites')}>
                 <img src='../../../public/images/activitieswhite.svg' className='color-image' alt="Dashboard Icon" />
                 <img src='../../../public/images/activitiescolor.svg' className='white-image' alt="Dashboard Icon" />
-                <li className="menu-item">Activities</li>
+                <li className="menu-item">Activites</li>
               </Link>
 
-              <Link className={`hover-items ${activeMenuItem === 'employees' ? 'active2' : ''}`} to="/admin/dashboard" onClick={() => handleMenuItemClick('employees')}>
+
+              {/* <li className={`menu-item ${activeMenuItem === 'menu1' ? 'active2' : ''}`} onClick={() => { handleAccordionClick(1); handleMenuItemClick('menu1'); }}>
+                Menu 1
+                {openAccordion === 1 && (
+                  <ul className="submenu">
+                    <li>
+                      <Link className={`submenu-item ${activeMenuItem === 'submenu1.1' ? 'active2' : ''}`}  to="/admin/page1" onClick={() => handleMenuItemClick('submenu1.1')}>Submenu 1.1</Link>
+                    </li>
+                    <li>
+                      <Link className={`submenu-item ${activeMenuItem === 'submenu1.2' ? 'active2' : ''}`}  to="/admin/page2" onClick={() => handleMenuItemClick('submenu1.2')}>Submenu 1.2</Link>
+                    </li>
+                  </ul>
+                )}
+              </li> */}
+
+
+
+              <Link className={`hover-items ${activeMenuItem === 'employess' ? 'active2' : ''}`} to="/admin/employess" onClick={() => handleMenuItemClickArrow('employess')}>
                 <img src='../../../public/images/employeeswhite.svg' className='color-image' alt="Dashboard Icon" />
                 <img src='../../../public/images/employeesscolor.svg' className='white-image' alt="Dashboard Icon" />
-                <li className="menu-item">Employees</li>
-                <span className={`dropdown-icon ${isDropdownVisible ? 'open' : ''}`}></span>
+                <li className="menu-item">Employess</li>
+                {!isDropdownVisible ? (
+                  <img
+                    src='../../../public/images/Border.svg' // Left arrow icon
+                    className='left-icon'
+                    alt="Left Icon"
+                  />
+                ) : (
+                  <img 
+                    src='../../../public/images/Border2.svg' // Bottom arrow icon
+                    className='bottom-icon'
+                    alt="Bottom Icon"
+                  />
+                )}
               </Link>
 
-              {isDropdownVisible && (
-                <ul className="dropdown-menu">
-                  <Link className="hover-items" to="/admin/all-employees">
-                    <li className="menu-item">All Employees</li>
-                  </Link>
-                  <Link className="hover-items" to="/admin/leave-requests">
-                    <li className="menu-item">Leave Requests</li>
-                  </Link>
-                  <Link className="hover-items" to="/admin/attendance">
-                    <li className="menu-item">Attendance</li>
-                  </Link>
-                  <Link className="hover-items" to="/admin/departments">
-                    <li className="menu-item">Departments</li>
-                  </Link>
-                </ul>
-              )}
 
-              <Link className={`hover-items ${activeMenuItem === 'accounts' ? 'active2' : ''}`} to="/admin/dashboard" onClick={() => handleMenuItemClickAccounts('accounts')}>
+              <ul className={`dropdown-menu ${isDropdownVisible ? 'show' : ''}`}>
+                <Link className="hover-items" to="/admin/Employees">
+                  <p>--</p>
+                  <li className="menu-item">All Employees</li>
+                </Link>
+                <Link className="hover-items" to="/admin/">
+                  <p>--</p>
+                  <li className="menu-item">Leave Requests</li>
+                </Link>
+                <Link className="hover-items" to="/admin/dashboard">
+                  <p>--</p>
+                  <li className="menu-item">Attendance</li>
+                </Link>
+                <Link className="hover-items" to="/admin/dashboard">
+                  <p>--</p>
+                  <li className="menu-item">Departments</li>
+                </Link>
+
+              </ul>
+
+              <Link className={`hover-items ${activeMenuItem === 'accounts' ? 'active2' : ''}`} to="/admin/accounts" onClick={() => handleMenuItemClickAccounts('accounts')}>
                 <img src='../../../public/images/accountswhite.svg' className='color-image' alt="Dashboard Icon" />
                 <img src='../../../public/images/accountcolor.svg' className='white-image' alt="Dashboard Icon" />
                 <li className="menu-item">Accounts</li>
+                {!isDropdownVisible ? (
+                  <img
+                    src='../../../public/images/Border.svg' // Left arrow icon
+                    className='left-icon'
+                    alt="Left Icon"
+                  />
+                ) : (
+                  <img
+                    src='../../../public/images/Border2.svg' // Bottom arrow icon
+                    className='bottom-icon'
+                    alt="Bottom Icon"
+                  />
+                )}
+
               </Link>
 
-              {accountDropdown && (
-                <ul className="dropdown-menu">
-                  <Link className="hover-items" to="/admin/all-accounts">
-                    <li className="menu-item">All Accounts</li>
-                  </Link>
-                  <Link className="hover-items" to="/admin/create-account">
-                    <li className="menu-item">Create Account</li>
-                  </Link>
-                </ul>
-              )}
+              <ul className={`dropdown-menu ${isDropdownVisible ? 'show' : ''}`}>
 
-              <Link className={`hover-items ${activeMenuItem === 'payroll' ? 'active2' : ''}`} to="/admin/dashboard" onClick={() => handleMenuItemClickPayroll('payroll')}>
+                <Link className="hover-items" to="/admin/dashboard">
+                  <p>--</p>
+                  <li className="menu-item">Payments</li>
+                </Link>
+                <Link className="hover-items" to="/admin/dashboard">
+                  <p>--</p>
+                  <li className="menu-item">Expenses</li>
+                </Link>
+                <Link className="hover-items" to="/admin/dashboard">
+                  <p>--</p>
+                  <li className="menu-item">Invoices</li>
+                </Link>
+
+              </ul>
+
+              <Link className={`hover-items ${activeMenuItem === 'payroll' ? 'active2' : ''}`} to="/admin/payroll" onClick={() => handleMenuItemClick('payroll')}>
                 <img src='../../../public/images/payrollwhite.svg' className='color-image' alt="Dashboard Icon" />
                 <img src='../../../public/images/payrollcolor.svg' className='white-image' alt="Dashboard Icon" />
                 <li className="menu-item">Payroll</li>
               </Link>
 
-              {payrollDropdown && (
-                <ul className="dropdown-menu">
-                  <Link className="hover-items" to="/admin/payroll-structure">
-                    <li className="menu-item">Payroll Structure</li>
-                  </Link>
-                  <Link className="hover-items" to="/admin/payroll-history">
-                    <li className="menu-item">Payroll History</li>
-                  </Link>
-                </ul>
-              )}
 
-              <Link className={`hover-items ${activeMenuItem === 'reports' ? 'active2' : ''}`} to="/admin/dashboard" onClick={() => handleMenuItemClickPayroll('reports')}>
+
+              <Link className={`hover-items ${activeMenuItem === 'reports' ? 'active2' : ''}`} to="/admin/reports" onClick={() => handleMenuItemClick('reports')}>
                 <img src='../../../public/images/reportswhite.svg' className='color-image' alt="Dashboard Icon" />
                 <img src='../../../public/images/reportscolor.svg' className='white-image' alt="Dashboard Icon" />
-                <li className="menu-item">Reports</li>
+                <li className="menu-item">Report</li>
               </Link>
 
-              {reportsDropdown && (
-                <ul className="dropdown-menu">
-                  <Link className="hover-items" to="/admin/reports">
-                    <li className="menu-item">All Reports</li>
-                  </Link>
-                  <Link className="hover-items" to="/admin/generate-report">
-                    <li className="menu-item">Generate Report</li>
-                  </Link>
-                </ul>
-              )}
+              <Link className={`hover-items ${activeMenuItem === 'users' ? 'active2' : ''}`} to="/admin/users" onClick={() => handleMenuItemClick('users')}>
+                <img src='../../../public/images/userwhite.svg' className='color-image' alt="Dashboard Icon" />
+                <img src='../../../public/images/usercolor.svg' className='white-image' alt="Dashboard Icon" />
+                <li className="menu-item">Users</li>
+              </Link>
+
+              <Link className={`hover-items ${activeMenuItem === 'authentication' ? 'active2' : ''}`} to="/admin/authentication" onClick={() => handleMenuItemClick('authentication')}>
+                <img src='../../../public/images/authwhite.svg' className='color-image' alt="Dashboard Icon" />
+                <img src='../../../public/images/authcolor.svg' className='white-image' alt="Dashboard Icon" />
+                <li className="menu-item">Authentication</li>
+              </Link>
+
+
             </ul>
           )}
-
-          {/* Additional tabs can be added here */}
+          {activeTab === 1 && <div>Content for Tab 2</div>}
+          {activeTab === 2 && <div>Content for Tab 3</div>}
         </div>
       </div>
     </div>

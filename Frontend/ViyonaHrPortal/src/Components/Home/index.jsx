@@ -1,6 +1,11 @@
 import { FaArrowLeft } from "react-icons/fa";
 
 import './index.css'
+import PieChart from "../PieChart";
+import SalaryBarGraph from "../SalaryBarGraph";
+import TotalSalaryBarGraph from "../Wavebargraph";
+import ToDoList from "../Todolist";
+import SalaryDashboard from "../SalaryBarGraph";
 
 
 const Home = () => {
@@ -61,6 +66,9 @@ const Home = () => {
                         <h1 className="main-head">Income Analysis</h1>
                         <p className="secondcard-para">8% High then last month</p>
                     </div>
+                    <div className="piechart">
+                        <PieChart/>
+                    </div>
                     <div className="bottom-text">
                         <div>
                             <h1 className="botom-head">Design</h1>
@@ -94,7 +102,11 @@ const Home = () => {
                             </button>
 
                         </div>
+                       
                     </div>
+                    <div>
+                            <SalaryBarGraph/>
+                        </div>
                 </div>
             </div>
             <div className="home-main-stats-cards">
@@ -103,6 +115,7 @@ const Home = () => {
                         <div className="year-head">
                             <h1 className="year-head-text">Total Salary by Unit</h1>
                         </div>
+                       
                         <div className="small-cards">
                             <button className="salary-innertopcards">
                                 <h1 className="wHead">W</h1>
@@ -113,12 +126,19 @@ const Home = () => {
                             <button className="salary-innertopcards2">
                                 <h1 className="wHead3">Y</h1>
                             </button>
-
+                        
                         </div>
+                        
                     </div>
+                    <div>
+                            <TotalSalaryBarGraph/>
+                        </div>
                 </div>
                 <div className="todo-stats-card">
                     <h1 className="todotext">ToDo List   </h1>
+                    <div>
+                        <ToDoList/>
+                    </div>
                 </div>
             </div>
         </div>

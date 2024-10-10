@@ -10,7 +10,15 @@ import AdminLogin from './Components/AdminLogin';
 import EmployeeMain from './Components/Employee/EmployeeMain';
 import ProtectedRoute from './ProtectedRoute';
 import Unauthorized from './Components/Unauthorisedroute';
+
 import Events from './Components/Events/Events';
+import Employees from './Components/Allemployes';
+
+
+
+
+
+
 
 
 const App = () => {
@@ -34,9 +42,10 @@ const App = () => {
           <Route path="/admin/page2" element={<ProtectedRoute element={<Page2 />} requiredRole="admin" />} />
           <Route path="/admin/settings" element={<ProtectedRoute element={<Settings />} requiredRole="admin" />} />
           <Route path="/admin/holidays" element={<ProtectedRoute element={<Holidays />} requiredRole="admin" />} />
-          <Route path="/admin/events" element={<ProtectedRoute element={<Events />} requiredRole="admin" />} />
+          <Route path="/admin/events" element={<ProtectedRoute element={< Events/>} requiredRole="admin" />} />
           {/* Protected route for Employee */}
           <Route path='/employee/dashboard' element={<ProtectedRoute element={<EmployeeMain />} requiredRole="employee" />} />
+          <Route path="/admin/Employees" element={<ProtectedRoute element={< Employees/>} requiredRole="admin" />} />
           <Route path='/unauthorised_access' element={<Unauthorized/>}/>
         </Routes>
       </div>
