@@ -1,5 +1,4 @@
 
-  /* Header styling */
   .header {
     display: flex;
     justify-content: space-between;
@@ -12,7 +11,7 @@
     margin: 0;
   }
   
-  /* Styling for the search bar */
+ 
   .search-bar {
     padding: 10px;
     border: 1px solid #ccc;
@@ -26,7 +25,7 @@
     border-color: #007bff;
   }
   
-  /* Dropdown styling */
+ 
   .filter-dropdown {
     margin-bottom: 20px;
   }
@@ -56,7 +55,7 @@
     font-size: 10px;
   }
   
-  /* Table styling */
+ 
   .table {
     width: 100%;
     border-collapse: collapse;
@@ -80,11 +79,11 @@
 
   
 
-  /* Styles for pagination */
+  
 .pagination {
     display: flex;
-    justify-content: flex-end; /* Align pagination to the right */
-    margin-top: 20px; /* Space between table and pagination */
+    justify-content: flex-end;   
+    margin-top: 20px;    
 }
 
 .previous-button{
@@ -127,7 +126,6 @@
    
   }
   
-/* Styles for the entire holiday list container */
 .holiday-list-container {
   padding: 20px;
   background-color: #FFFFFF;
@@ -140,7 +138,7 @@
   
 }
 
-/* Header styling */
+ 
 .header {
   display: flex;
   justify-content: space-between;
@@ -153,22 +151,21 @@
   margin: 0;
 }
 
-/* Table styling */
+
 .table {
-  width: 100%; /* Adjust table width as needed */
-  border-collapse: collapse; /* Ensures borders are collapsed for a cleaner look */
+  width: 100%;
+  border-collapse: collapse; 
 }
 
 .table thead {
-  background: linear-gradient(90deg, #3408A4 0%, #A96C5E 100%); /* Gradient background for the header */
+  background: linear-gradient(90deg, #3408A4 0%, #A96C5E 100%); 
 }
 
 .table thead th { 
-  color: white; /* Text color for better visibility against the gradient */
-  padding: 10px; /* Padding for spacing */
-  text-align: left; /* Align text to the left */
+  color: white; 
+  padding: 10px; 
+  text-align: left; 
 }
-/* Responsive for smaller screens */
 @media (max-width: 768px) {
   .header {
     flex-direction: column;
@@ -186,7 +183,7 @@
 }
 
   
-  /* Responsive for smaller screens */
+ 
   @media (max-width: 768px) {
     .header {
       flex-direction: column;

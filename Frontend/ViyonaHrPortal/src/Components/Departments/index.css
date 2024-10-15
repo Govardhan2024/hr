@@ -1,0 +1,58 @@
+.dashboard-text {
+    margin-bottom: 20px;
+    margin-left: 20px;
+}
+
+.department-list-container {
+    padding: 20px;
+    background-color: #FFFFFF;
+    width: 1576px; /* Consider using responsive units */
+    height: 792px; /* Consider using responsive units */
+    border: 1px solid #CFCFCF;
+    border-radius: 9px;
+    margin-left: 20px;
+    margin-top: 20px;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.table th, .table td {
+   
+    padding: 10px;
+    text-align: left;
+}
+
+.edit-button, .delete-button {
+    border: none;
+    background: transparent;
+    cursor: pointer;
+}
+
+.popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.popup-content {
+    background: white;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}

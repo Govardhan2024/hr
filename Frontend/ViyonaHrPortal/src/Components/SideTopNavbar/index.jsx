@@ -153,7 +153,7 @@ const SideTopNavbar = () => {
 
 
 
-              <Link className={`hover-items ${activeMenuItem === 'employess' ? 'active2' : ''}`} to="/admin/employess" onClick={() => handleMenuItemClickArrow('employess')}>
+              <Link className={`hover-items ${activeMenuItem === 'Employees' ? 'active2' : ''}`} to="/admin/Employees" onClick={() => handleMenuItemClickArrow('Employees')}>
                 <img src='../../../public/images/employeeswhite.svg' className='color-image' alt="Dashboard Icon" />
                 <img src='../../../public/images/employeesscolor.svg' className='white-image' alt="Dashboard Icon" />
                 <li className="menu-item">Employess</li>
@@ -178,15 +178,15 @@ const SideTopNavbar = () => {
                   <p>--</p>
                   <li className="menu-item">All Employees</li>
                 </Link>
-                <Link className="hover-items" to="/admin/">
+                <Link className="hover-items" to="/admin/Leaverequest">
                   <p>--</p>
                   <li className="menu-item">Leave Requests</li>
                 </Link>
-                <Link className="hover-items" to="/admin/dashboard">
+                <Link className="hover-items" to="/admin/Attendence">
                   <p>--</p>
                   <li className="menu-item">Attendance</li>
                 </Link>
-                <Link className="hover-items" to="/admin/dashboard">
+                <Link className="hover-items" to="/admin/Departments">
                   <p>--</p>
                   <li className="menu-item">Departments</li>
                 </Link>
@@ -215,15 +215,15 @@ const SideTopNavbar = () => {
 
               <ul className={`dropdown-menu ${isDropdownVisible ? 'show' : ''}`}>
 
-                <Link className="hover-items" to="/admin/dashboard">
+                <Link className="hover-items" to="/admin/Payments">
                   <p>--</p>
                   <li className="menu-item">Payments</li>
                 </Link>
-                <Link className="hover-items" to="/admin/dashboard">
+                <Link className="hover-items" to="/admin/Expenses">
                   <p>--</p>
                   <li className="menu-item">Expenses</li>
                 </Link>
-                <Link className="hover-items" to="/admin/dashboard">
+                <Link className="hover-items" to="/admin/Invoices">
                   <p>--</p>
                   <li className="menu-item">Invoices</li>
                 </Link>
@@ -234,6 +234,19 @@ const SideTopNavbar = () => {
                 <img src='../../../public/images/payrollwhite.svg' className='color-image' alt="Dashboard Icon" />
                 <img src='../../../public/images/payrollcolor.svg' className='white-image' alt="Dashboard Icon" />
                 <li className="menu-item">Payroll</li>
+                {!isDropdownVisible ? (
+                  <img
+                    src='../../../public/images/Border.svg' // Left arrow icon
+                    className='left-icon'
+                    alt="Left Icon"
+                  />
+                ) : (
+                  <img 
+                    src='../../../public/images/Border2.svg' // Bottom arrow icon
+                    className='bottom-icon'
+                    alt="Bottom Icon"
+                  />
+                )}
               </Link>
 
 

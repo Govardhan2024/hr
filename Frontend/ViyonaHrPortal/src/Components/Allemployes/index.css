@@ -71,3 +71,16 @@
 .popup-content .cancel-button:hover {
     opacity: 0.9;
 }
+.dashboard-text{
+    margin-top: 50px;
+}
+.employee-list-container{
+    padding: 20px;
+    background-color: #FFFFFF;
+    width: 1576px;
+    height: 792px;
+    border: 1px solid #CFCFCF;
+    border-radius: 9px;
+    margin-left: 20px;
+    margin-top: 20px;
+}

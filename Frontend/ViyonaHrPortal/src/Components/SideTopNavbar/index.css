@@ -1,4 +1,4 @@
-/* General Navbar Container */
+
 .navbar-container {
     display: flex;
     height: 100vh;
@@ -6,7 +6,7 @@
 
 }
 
-/* Top Navigation Bar */
+
 .top-bar {
     
     width: 100vw;
@@ -96,10 +96,10 @@
 }
 
 
-/* Hover effect for menu items */
+
 .navbar-menu .menu-item:hover {
-    /* Change background color on hover */
-   color: white; /* Change text color on hover */
+    
+   color: white; 
 }
 
 .navbar-menu .menu-item .submenu {

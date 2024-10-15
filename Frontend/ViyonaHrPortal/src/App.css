@@ -1,4 +1,8 @@
 /* App layout */
+body{
+  font-family: "Ubuntu", sans-serif;
+  font-weight: 300;
+}
 .app-container {
     display: flex;
     height: 100vh;

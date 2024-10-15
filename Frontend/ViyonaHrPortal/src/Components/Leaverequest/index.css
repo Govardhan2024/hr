@@ -1,0 +1,34 @@
+/* Popup Overlay */
+.popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+/* Popup Content Container */
+.popup-content {
+    background-color: white;
+    padding: 30px;
+    width: 500
+}
+.approve-button, .reject-button {
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+    margin-right: 5px;
+}
+
+.approve-button:hover {
+    transform: scale(1.1);
+}
+
+.reject-button:hover {
+    transform: scale(1.1);
+}

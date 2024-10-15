@@ -1,0 +1,26 @@
+.department-list-container{
+    overflow-y: scroll;
+   
+}
+.row-padding{
+   padding-bottom: 50px;
+}
+.employee-list-container{
+    padding: 20px;
+    background-color: #FFFFFF;
+    width: 1576px;
+    height: calc(100vh - 100px);
+    border: 1px solid #CFCFCF;
+    border-radius: 9px;
+    margin-left: 20px;
+    margin-top: 20px;
+    overflow-y: scroll;
+    scroll-behavior: smooth;
+    
+}
+.employee-list-container::-webkit-scrollbar {
+    display: none; /* Hide scrollbar */
+}
+.attendance-row {
+    height: 70px; /* Set your desired row height here */
+}
