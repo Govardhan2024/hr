@@ -1,0 +1,18 @@
+.send-payslip-button {
+    background-color: #87bd89;
+    color: #fff;
+    border-radius: 5px;
+    border: none;
+}
+
+.editinput {
+    width: 266px;
+    height: 38px;
+    top: 294px;
+    left: 773px;
+    padding-left: 20px;
+    border-radius: 5px 0px 0px 0px;
+    border: 0.7px 0px 0px 0px;
+    opacity: 0px;
+    border: 0.7px solid #D9D9D9
+}

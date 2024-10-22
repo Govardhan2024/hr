@@ -5,7 +5,6 @@ import PieChart from "../PieChart";
 import SalaryBarGraph from "../SalaryBarGraph";
 import TotalSalaryBarGraph from "../Wavebargraph";
 import ToDoList from "../Todolist";
-import SalaryDashboard from "../SalaryBarGraph";
 
 
 const Home = () => {

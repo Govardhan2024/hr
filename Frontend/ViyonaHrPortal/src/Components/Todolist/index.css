@@ -36,9 +36,9 @@
   }
   
   .todo-item.completed {
-    background-color: #e0ffe0; /* Light green for completed tasks */
-    text-decoration: line-through; /* Strikethrough text */
-    color: #888; /* Grey text color */
+    background-color: #e0ffe0; 
+    text-decoration: line-through; 
+    color: #888; 
   }
   
   .employee-list {
@@ -55,7 +55,7 @@
   }
   
   label {
-    flex-grow: 1; /* Allow the label to grow to fill available space */
-    cursor: pointer; /* Change cursor to pointer for better UX */
+    flex-grow: 1; 
+    cursor: pointer; 
   }
   

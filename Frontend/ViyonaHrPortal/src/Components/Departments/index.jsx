@@ -103,7 +103,7 @@ const Departments = () => {
             <div className="department-list-container">
                 <div className="header">
                     <div className="entries-dropdown">
-                        <label htmlFor="entriesPerPage">Show Entries:</label>
+                        <label htmlFor="entriesPerPage">Show </label>
                         <select
                             id="entriesPerPage"
                             value={entriesPerPage}
@@ -113,9 +113,15 @@ const Departments = () => {
                             <option value={10}>10</option>
                             <option value={20}>20</option>
                         </select>
+                        <label htmlFor="entriesPerPage"> Entries</label>
                     </div>
 
                     <div className="header-actions">
+                        <div className="btn-card">
+                        <button className="add-employee-button" onClick={() => { resetNewDepartment(); setShowPopup(true); }}>
+                            {showPopup ? 'X Close' : 'Add New'}
+                        </button>
+                        </div>
                         <input
                             type="text"
                             className="search-bar"
@@ -123,9 +129,7 @@ const Departments = () => {
                             value={searchTerm}
                             onChange={(e) => setSearchTerm(e.target.value)}
                         />
-                        <button className="add-department-button" onClick={() => { resetNewDepartment(); setShowPopup(true); }}>
-                            {showPopup ? 'X Close' : 'Add New'}
-                        </button>
+                       
                     </div>
                 </div>
 
@@ -133,6 +137,7 @@ const Departments = () => {
                     <thead>
                         <tr>
                             <th>No</th>
+                            <th>Profile </th>
                             <th>Department Name</th>
                             <th>Department Head</th>
                             <th>No. of Employees</th>
@@ -143,6 +148,7 @@ const Departments = () => {
                         {currentEntries.map((department) => (
                             <tr key={department.id}>
                                 <td>{department.id}</td>
+                                <td><img  className="td-img" src="../../../public/images/image (2).svg"/></td>
                                 <td>{department.departmentName}</td>
                                 <td>{department.departmentHead}</td>
                                 <td>{department.totalEmployees}</td>
@@ -176,28 +182,37 @@ const Departments = () => {
             {showPopup && (
                 <div className="popup">
                     <div className="popup-content">
-                        <h2>{newDepartment.id ? 'Edit Department' : 'Add New Department'}</h2>
+                        <h2 className="addhead">{newDepartment.id ? 'Edit Department' : 'Add New Department'}</h2>
                         <form onSubmit={handleAddDepartment}>
+                            <div>
                             <input
+                                className="depinput"
                                 type="text"
                                 placeholder="Department Name"
                                 value={newDepartment.departmentName}
                                 onChange={(e) => setNewDepartment({ ...newDepartment, departmentName: e.target.value })}
                             />
+                            </div>
+                            <div style={{display:'flex',gap:'5px'}}>
                             <input
+                                className="depinput2"
                                 type="text"
                                 placeholder="Department Head"
                                 value={newDepartment.departmentHead}
                                 onChange={(e) => setNewDepartment({ ...newDepartment, departmentHead: e.target.value })}
                             />
                             <input
+                            className="depinput2"
                                 type="number"
                                 placeholder="No. of Employees"
                                 value={newDepartment.totalEmployees}
                                 onChange={(e) => setNewDepartment({ ...newDepartment, totalEmployees: e.target.value })}
                             />
-                            <button type="submit">{newDepartment.id ? 'Save' : 'Add'}</button>
+                            </div>
+                            <div style={{display:'flex',justifyContent:'flex-end',marginTop:"60px"}}>
+                            <button  className="add-btn" type="submit">{newDepartment.id ? 'Save' : 'Add'}</button>
                             <button type="button" onClick={() => setShowPopup(false)}>Close</button>
+                            </div>
                         </form>
                     </div>
                 </div>

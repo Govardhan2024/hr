@@ -1,16 +1,16 @@
 import { FaArrowLeft } from "react-icons/fa";
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import axios from 'axios';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import './index.css';
 
 const initialEmployees = [
-    { id: 1, name: 'John Gresham', phone: '123-456-7890', joinDate: '2024-01-01', role: 'Developer' },
-    { id: 2, name: 'Jane Smith', phone: '987-654-3210', joinDate: '2024-02-14', role: 'Designer' },
+    { id: 1, name: 'John Doe', adminType: 'Super Admin', createdDate: '2024-01-01', role: 'Developer' },
+    { id: 2, name: 'Jane Smith', adminType: 'HR Admin', createdDate: '2024-02-14', role: 'Designer' },
 ];
 
-const Employees = () => {
+const Users = () => {
     const [employees, setEmployees] = useState(initialEmployees);
     const [searchTerm, setSearchTerm] = useState('');
     const [currentPage, setCurrentPage] = useState(1);
@@ -18,20 +18,24 @@ const Employees = () => {
     const [showPopup, setShowPopup] = useState(false);
     const [newEmployee, setNewEmployee] = useState({
         id: null,
-        employeeName: '',
-        employeePersonalEmail: '',
-        employeeWorkingEmail: '',
-        employeePhoneNumber: '',
-        joinDate: '',
-        jobrole: '',
-        role: '',
-        pictureUpload: '',
-        password: ''
+        firstName: '',
+        lastName: '',
+        emailId: '',
+        username: '',
+        password: '',
+        confirmPassword: '',
+        mobileNumber: '',
+        adminType: '',
+        employeeId: '',
+        permissions: {
+            read: false,
+            write: false,
+            delete: false
+        }
     });
 
     const filteredEmployees = employees.filter(employee =>
-        employee.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        employee.phone.includes(searchTerm)
+        employee.name.toLowerCase().includes(searchTerm.toLowerCase())
     );
 
     const totalEntries = filteredEmployees.length;
@@ -45,18 +49,17 @@ const Employees = () => {
     }
 
     const handleAddEmployee = async (event) => {
-        event.preventDefault(); 
+        event.preventDefault();
 
-        if (newEmployee.employeeName && newEmployee.employeePersonalEmail && newEmployee.employeePhoneNumber) {
+        if (newEmployee.firstName && newEmployee.emailId && newEmployee.mobileNumber && newEmployee.password === newEmployee.confirmPassword) {
             try {
                 const response = await axios.post('http://127.0.0.1:8000/create-employee', newEmployee);
                 if (response.data) {
-                    const addedEmployee = { id: response.data.id, ...newEmployee };
+                    const addedEmployee = { id: response.data.id, name: `${newEmployee.firstName} ${newEmployee.lastName}`, ...newEmployee };
                     setEmployees([...employees, addedEmployee]);
                     setShowPopup(false);
                     resetNewEmployee();
-                    toast.success('Employee successfully added!');
-
+                    toast.success('User successfully added!');
 
                     setTimeout(() => {
                         window.location.reload();
@@ -64,59 +67,32 @@ const Employees = () => {
                 }
             } catch (error) {
                 console.error("There was an error creating the employee!", error);
-                toast.error('Error adding employee.');
+                toast.error('Error adding user.');
             }
         } else {
-            toast.error('Please fill in all required fields.');
+            toast.error('Please fill in all required fields and ensure passwords match.');
         }
-    };
-
-    const handleDeleteEmployee = (id) => {
-        setEmployees(employees.filter(employee => employee.id !== id));
-    };
-
-    const handleEditEmployee = (id) => {
-        const employeeToEdit = employees.find(employee => employee.id === id);
-        setNewEmployee(employeeToEdit);
-        setShowPopup(true);
-    };
-
-    const handleSaveEditEmployee = () => {
-        setEmployees(employees.map(emp => emp.id === newEmployee.id ? newEmployee : emp));
-        setShowPopup(false);
-        resetNewEmployee();
-        toast.success('Employee details successfully updated!');
     };
 
     const resetNewEmployee = () => {
         setNewEmployee({
             id: null,
-            employeeName: '',
-            employeePersonalEmail: '',
-            employeeWorkingEmail: '',
-            employeePhoneNumber: '',
-            joinDate: '',
-            jobrole: '',
-            role: '',
-            pictureUpload: '',
-            password: ''
+            firstName: '',
+            lastName: '',
+            emailId: '',
+            username: '',
+            password: '',
+            confirmPassword: '',
+            mobileNumber: '',
+            adminType: '',
+            employeeId: '',
+            permissions: {
+                read: false,
+                write: false,
+                delete: false
+            }
         });
     };
-
-    useEffect(() => {
-        let intervalId;
-
-        if (showPopup) {
-
-            intervalId = setInterval(() => {
-                window.location.reload();
-            }, 60000);
-        }
-
-        return () => {
-            clearInterval(intervalId);
-        };
-    }, [showPopup]);
 
     return (
         <div>
@@ -131,7 +107,7 @@ const Employees = () => {
                 </div>
             </div>
 
-            <div className="department-list-container ">
+            <div className="department-list-container">
                 <div className="header">
                     <div className="entries-dropdown">
                         <label htmlFor="entriesPerPage">Show </label>
@@ -143,7 +119,6 @@ const Employees = () => {
                             <option value={5}>5</option>
                             <option value={10}>10</option>
                             <option value={20}>20</option>
-
                         </select>
                         <label htmlFor="entriesPerPage"> Entries</label>
                     </div>
@@ -151,7 +126,7 @@ const Employees = () => {
                     <div className="header-actions">
                         <div className="btn-card">
                             <button className="add-employee-button" onClick={() => setShowPopup(!showPopup)}>
-                                {showPopup ? 'X Close' : 'Add New'}
+                                {showPopup ? 'X Close' : 'New User'}
                             </button>
                         </div>
                         <input
@@ -161,7 +136,6 @@ const Employees = () => {
                             value={searchTerm}
                             onChange={(e) => setSearchTerm(e.target.value)}
                         />
-
                     </div>
                 </div>
 
@@ -171,8 +145,8 @@ const Employees = () => {
                             <th>No.</th>
                             <th>Profile</th>
                             <th>Name</th>
-                            <th>Phone No.</th>
-                            <th>Join Date</th>
+                            <th>Admin</th>
+                            <th>Created Date</th>
                             <th>Role</th>
                             <th>Action</th>
                         </tr>
@@ -181,14 +155,14 @@ const Employees = () => {
                         {currentEntries.map((employee) => (
                             <tr key={employee.id}>
                                 <td>{employee.id}</td>
-                                <td><img  className="td-img" src="../../../public/images/image (2).svg"/></td>
+                                <td><img className="td-img" src="../../../public/images/image (2).svg" /></td>
                                 <td>{employee.name}</td>
-                                <td>{employee.phone}</td>
-                                <td>{employee.joinDate}</td>
+                                <td>{employee.adminType}</td>
+                                <td>{employee.createdDate}</td>
                                 <td>{employee.role}</td>
                                 <td>
-                                    <button className="edit-button" onClick={() => handleEditEmployee(employee.id)}>Edit</button>
-                                    <button className="delete-button" onClick={() => handleDeleteEmployee(employee.id)}>Delete</button>
+                                    <button className="edit-button">Edit</button>
+                                    <button className="delete-button">Delete</button>
                                 </td>
                             </tr>
                         ))}
@@ -210,65 +184,42 @@ const Employees = () => {
             </div>
 
             {showPopup && (
-                <div className="popup">
-                    <div className="popup-content">
-                        <h2 className="addhead">{newEmployee.id ? 'Edit Employee' : 'Add New Employee'}</h2>
-                        <div className="popupline"></div>
-                        <form onSubmit={newEmployee.id ? handleSaveEditEmployee : handleAddEmployee}>
+                <div className="popupuser">
+                    <div className="popup-contentuser">
+                        <h2 className="addhead">{newEmployee.id ? 'Edit User' : 'Add New User'}</h2>
+                        <div className="popuplineusre"></div>
+                        <form onSubmit={handleAddEmployee}>
                             <div style={{ display: 'flex', gap: '10px', marginTop: '20px' }}>
                                 <input
                                     className="addinput"
                                     type="text"
-                                    placeholder="Employee Name"
-                                    value={newEmployee.employeeName}
-                                    onChange={(e) => setNewEmployee({ ...newEmployee, employeeName: e.target.value })}
+                                    placeholder="First Name"
+                                    value={newEmployee.firstName}
+                                    onChange={(e) => setNewEmployee({ ...newEmployee, firstName: e.target.value })}
                                 />
                                 <input
                                     className="addinput"
-                                    type="email"
-                                    placeholder="Personal Email"
-                                    value={newEmployee.employeePersonalEmail}
-                                    onChange={(e) => setNewEmployee({ ...newEmployee, employeePersonalEmail: e.target.value })}
+                                    type="text"
+                                    placeholder="Last Name"
+                                    value={newEmployee.lastName}
+                                    onChange={(e) => setNewEmployee({ ...newEmployee, lastName: e.target.value })}
                                 />
                             </div>
                             <input
                                 className="addinput2"
                                 type="email"
-                                placeholder="Working Email"
-                                value={newEmployee.employeeWorkingEmail}
-                                onChange={(e) => setNewEmployee({ ...newEmployee, employeeWorkingEmail: e.target.value })}
+                                placeholder="Email ID"
+                                value={newEmployee.emailId}
+                                onChange={(e) => setNewEmployee({ ...newEmployee, emailId: e.target.value })}
                             />
-                            <div style={{ display: 'flex', gap: '5px' }}>
-                                <input
-                                    className="addinput3"
-                                    type="text"
-                                    placeholder="Phone Number"
-                                    value={newEmployee.employeePhoneNumber}
-                                    onChange={(e) => setNewEmployee({ ...newEmployee, employeePhoneNumber: e.target.value })}
-                                />
-                                <input
-                                    className="addinput3"
-                                    type="date"
-                                    value={newEmployee.joinDate}
-                                    onChange={(e) => setNewEmployee({ ...newEmployee, joinDate: e.target.value })}
-                                />
-                                <input
-                                    className="addinput3"
-                                    type="text"
-                                    placeholder="Job Role"
-                                    value={newEmployee.jobrole}
-                                    onChange={(e) => setNewEmployee({ ...newEmployee, jobrole: e.target.value })}
-                                />
-                            </div>
+                            <input
+                                className="addinput2"
+                                type="text"
+                                placeholder="Username"
+                                value={newEmployee.username}
+                                onChange={(e) => setNewEmployee({ ...newEmployee, username: e.target.value })}
+                            />
                             <div style={{ display: 'flex', gap: '10px' }}>
-                                <input
-                                    className="addinput"
-                                    type="text"
-                                    placeholder="Role"
-                                    value={newEmployee.role}
-                                    onChange={(e) => setNewEmployee({ ...newEmployee, role: e.target.value })}
-                                />
-
                                 <input
                                     className="addinput"
                                     type="password"
@@ -276,24 +227,44 @@ const Employees = () => {
                                     value={newEmployee.password}
                                     onChange={(e) => setNewEmployee({ ...newEmployee, password: e.target.value })}
                                 />
-                            </div>
-
-                            <div>
                                 <input
-                                    className="choosefile"
-                                    type="file"
-                                    accept="image/*"
-                                    onChange={(e) => setNewEmployee({ ...newEmployee, pictureUpload: e.target.files[0]?.name })}
+                                    className="addinput"
+                                    type="password"
+                                    placeholder="Confirm Password"
+                                    value={newEmployee.confirmPassword}
+                                    onChange={(e) => setNewEmployee({ ...newEmployee, confirmPassword: e.target.value })}
                                 />
                             </div>
-                            <div style={{ display: 'flex', justifyContent: 'flex-end', marginTop: "30px" }}>
-                                <button className="add-btn"
-                                    type="submit">
-                                    {newEmployee.id ? 'Save' : 'Add'}
+                            <input
+                                className="addinput2"
+                                type="text"
+                                placeholder="Mobile Number"
+                                value={newEmployee.mobileNumber}
+                                onChange={(e) => setNewEmployee({ ...newEmployee, mobileNumber: e.target.value })}
+                            />
+                            <input
+                                className="addinput2"
+                                type="text"
+                                placeholder="Employee ID"
+                                value={newEmployee.employeeId}
+                                onChange={(e) => setNewEmployee({ ...newEmployee, employeeId: e.target.value })}
+                            />
+                            <select
+                                className="Selecttype"
+                                value={newEmployee.adminType}
+                                onChange={(e) => setNewEmployee({ ...newEmployee, adminType: e.target.value })}
+                            >
+                                <option value="">Select Type</option>
+                                <option value="Super Admin">Super Admin</option>
+                                <option value="Admin">Admin</option>
+                                <option value="Employee">Employee</option>
+                            </select>
+                            <div style={{ display: 'flex', justifyContent: 'flex-end', marginTop: "30px", gap: '15px', marginRight: '20px' }}>
+                                <button type="submit" className="add-btn">
+                                    {newEmployee.id ? 'Save Changes' : 'Add User'}
                                 </button>
                                 <button className="close-btn" type="button" onClick={() => setShowPopup(false)}>Close</button>
                             </div>
-
                         </form>
                     </div>
                 </div>
@@ -302,4 +273,4 @@ const Employees = () => {
     );
 };
 
-export default Employees;
+export default Users;

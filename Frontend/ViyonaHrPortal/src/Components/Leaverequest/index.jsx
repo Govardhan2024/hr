@@ -1,8 +1,9 @@
+/* eslint-disable no-undef */
 import { FaArrowLeft, FaCheck, FaTimes } from "react-icons/fa";
 import { useState, useEffect } from 'react';
-import axios from 'axios'; 
-import { ToastContainer, toast } from 'react-toastify'; 
-import 'react-toastify/dist/ReactToastify.css'; 
+import axios from 'axios';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import './index.css';
 
 const initialEmployees = [
@@ -110,10 +111,10 @@ const Leaverequest = () => {
                 </div>
             </div>
 
-            <div className="employee-list-container">
+            <div className="department-list-container ">
                 <div className="header">
                     <div className="entries-dropdown">
-                        <label htmlFor="entriesPerPage">Show Entries:</label>
+                        <label htmlFor="entriesPerPage">Show </label>
                         <select
                             id="entriesPerPage"
                             value={entriesPerPage}
@@ -123,9 +124,15 @@ const Leaverequest = () => {
                             <option value={10}>10</option>
                             <option value={20}>20</option>
                         </select>
+                        <label htmlFor="entriesPerPage"> Entries</label>
                     </div>
 
                     <div className="header-actions">
+                        <div className="btn-card">
+                            <button className="add-employee-button" onClick={() => setShowPopup(!showPopup)}>
+                                {showPopup ? 'X Close' : 'Add Leave'}
+                            </button>
+                        </div>
                         <input
                             type="text"
                             className="search-bar"
@@ -133,9 +140,7 @@ const Leaverequest = () => {
                             value={searchTerm}
                             onChange={(e) => setSearchTerm(e.target.value)}
                         />
-                        <button className="add-employee-button" onClick={() => setShowPopup(!showPopup)}>
-                            {showPopup ? 'X Close' : 'Add Leave'}
-                        </button>
+
                     </div>
                 </div>
 
@@ -143,10 +148,11 @@ const Leaverequest = () => {
                     <thead>
                         <tr>
                             <th>No</th>
+                            <th>Profile</th>
                             <th>Name</th>
                             <th>Employee ID</th> {/* Updated Header */}
                             <th>Leave Type</th>
-                            <th>Date</th>   
+                            <th>Date</th>
                             <th>Action</th>
                         </tr>
                     </thead>
@@ -154,6 +160,7 @@ const Leaverequest = () => {
                         {currentEntries.map((employee) => (
                             <tr key={employee.id}>
                                 <td>{employee.id}</td>
+                                <td><img  className="td-img" src="../../../public/images/image (2).svg"/></td>
                                 <td>{employee.name}</td>
                                 <td>{employee.employeeId}</td> {/* Updated Employee ID */}
                                 <td>{employee.leaveType}</td>
@@ -188,15 +195,11 @@ const Leaverequest = () => {
             {showPopup && (
                 <div className="popup">
                     <div className="popup-content">
-                        <h2>{newLeave.id ? 'Edit Leave Request' : 'Add New Leave Request'}</h2>
+                        <h2 className="addhead">{newLeave.id ? 'Edit Leave Request' : 'Add New Leave Request'}</h2>
                         <form onSubmit={newLeave.id ? handleSaveEditEmployee : handleAddLeave}>
-                            <input
-                                type="text"
-                                placeholder="Employee Name"
-                                value={newLeave.employeeName}
-                                onChange={(e) => setNewLeave({ ...newLeave, employeeName: e.target.value })}
-                            />
+                           <div>
                             <select
+                                className="select"
                                 value={newLeave.leaveType}
                                 onChange={(e) => setNewLeave({ ...newLeave, leaveType: e.target.value })}
                             >
@@ -205,18 +208,33 @@ const Leaverequest = () => {
                                 <option value="Medical Leave">Medical Leave</option>
                                 <option value="Maternity Leave">Maternity Leave</option>
                             </select>
+                            </div>
+                            <div style={{display:"flex",gap:'5px'}}>
                             <input
+                                className="addleave"
+                                type="text"
+                                placeholder="Employee Name"
+                                value={newLeave.employeeName}
+                                onChange={(e) => setNewLeave({ ...newLeave, employeeName: e.target.value })}
+                            />
+
+                            <input
+                                className="addleave"
                                 type="date"
                                 value={newLeave.fromDate}
                                 onChange={(e) => setNewLeave({ ...newLeave, fromDate: e.target.value })}
                             />
+                            </div>
                             <textarea
+                                className="textare"
                                 placeholder="Reason"
                                 value={newLeave.reason}
                                 onChange={(e) => setNewLeave({ ...newLeave, reason: e.target.value })}
                             />
-                            <button type="submit">{newLeave.id ? 'Save' : 'Add'}</button>
+                            <div style={{display:'flex',justifyContent:'flex-end',marginTop:"30px"}}>
+                            <button className="add-btn" type="submit">{newLeave.id ? 'Save' : 'Add'}</button>
                             <button type="button" onClick={() => setShowPopup(false)}>Close</button>
+                            </div>
                         </form>
                     </div>
                 </div>

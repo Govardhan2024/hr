@@ -34,10 +34,7 @@
     font-weight: bold;
     margin-right: 10px;
   }
-  .filter-dropdown{
-   
-    
-  }
+
   .label-text{
     margin-left: 5px;
     color: #7C7C7C;
@@ -57,7 +54,7 @@
   
  
   .table {
-    width: 100%;
+    
     border-collapse: collapse;
   }
   .tbody td{
@@ -69,6 +66,7 @@
     text-align: left;
   }
   .table thead{
+    width: 1012px;
     background: linear-gradient(90deg, #3408A4 0%, #A96C5E 100%);
   }
   

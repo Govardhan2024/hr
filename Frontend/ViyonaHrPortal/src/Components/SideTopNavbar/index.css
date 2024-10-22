@@ -44,7 +44,7 @@
     color: #BDBDBD;
     margin-left: 163px;
 }
-/* Title and Toggle Button */
+
 .navbar-title {
     font-size: 20px;
 }
@@ -57,11 +57,11 @@
     cursor: pointer;
 }
 
-/* Sidebar */
+
 .side-navbar {
     background-color: #F6F6F6;
     width: 250px;
-    padding-top: 60px; /* Push below the top bar */
+    padding-top: 60px; 
     color: black;
     
     height: calc(100vh - 100px);
@@ -86,13 +86,14 @@
     padding: 0;
 }
 
-/* Menu Item Styles */
+
 .navbar-menu .menu-item {
     padding: 15px 20px;
     cursor: pointer;
     transition: background-color 0.3s, color 0.3s;
     font-size: 15px;
     font-weight: 400;
+   
 }
 
 
@@ -133,7 +134,7 @@
     font-weight: 400;
 }
 
-/* Dropdown container */
+
 .dropdown {
     background-color: #fff;
     border: 1px solid #ccc;
@@ -147,7 +148,7 @@
     z-index: 1000;
   }
   
-  /* Dropdown animation */
+  
   .animated-dropdown {
     animation: slideDown 0.3s ease-out;
   }
@@ -190,7 +191,7 @@
     }
   }
   
-  /* Dropdown menu items */
+
   .dropdown ul {
     list-style: none;
     padding: 0;
@@ -208,7 +209,7 @@
     background-color: #f0f0f0;
   }
   
-  /* Additional styling for Profile, Settings, and Logout hover */
+  
   .profile-card-menu:hover {
     cursor: pointer;
   }
@@ -224,7 +225,7 @@
     color: black;
     text-decoration: none;
   }
-  /* Sidebar item hover effect */
+  
   .hover-items:hover {
     background: linear-gradient(90deg, #3106A5 0%, #AA6C5D 100%);
     color: white;
@@ -254,28 +255,27 @@
   }
   
   .tabs {
-    display: flex; /* Use flexbox to align tabs horizontally */
-    /* Bottom border for the tabs */
+    display: flex; 
     outline: none;
     color: #555555;
   }
   
   .tab {
-    padding: 10px 20px; /* Padding for each tab */
-    cursor: pointer; /* Pointer cursor on hover */
-    border: 1px solid transparent; /* Transparent border for alignment */
-    transition: background-color 0.3s; /* Smooth background transition */
+    padding: 10px 20px; 
+    cursor: pointer; 
+    border: 1px solid transparent; 
+    transition: background-color 0.3s; 
   }
   
   .tab.active {
     background-color: #FFFFFF;
     border-radius: 6px 6px;
-    color: #3207A5; /* Active tab text color */
+    color: #3207A5; 
     border: 1px solid #F0F0F0;
     
   }
 
-  /* Dropdown styling */
+
 .dropdown-menu {
   list-style: none;
   padding: 0;
@@ -286,19 +286,25 @@
   transition: all 0.3s ease-in-out;
 }
 
-/* Show dropdown with animation */
+
 .dropdown-menu.show {
   opacity: 1;
-  max-height: 200px; /* Adjust based on number of items */
+  max-height: 200px; 
 }
 
-/* Individual list items */
+
 .menu-item{
   font-size: 25px;
 }
 .left-icon{
-  margin-left: 48px;
+  margin-left: 30px;
 
+}
+.left-icon2{
+  margin-left: 40px;
+}
+.left-icon3{
+  margin-left: 54px;
 }
 
 .bottom-icon{
@@ -310,7 +316,7 @@
 
  
 
-/* Responsive Sidebar */
+
 @media (max-width: 768px) {
     .side-navbar {
         width: 80px;

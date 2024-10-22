@@ -1,6 +1,6 @@
 import { FaArrowLeft } from "react-icons/fa";
-// eslint-disable-next-line no-unused-vars
-import React, { useState } from 'react';
+
+import  { useState } from 'react';
 import './Holidays.css'
 
 const holidays = [
@@ -30,9 +30,9 @@ const Holidays = () => {
     const [searchTerm, setSearchTerm] = useState('');
     const [selectedDay, setSelectedDay] = useState('All');
     const [currentPage, setCurrentPage] = useState(1);
-    const [entriesPerPage] = useState(10); // Change this number to adjust entries per page
+    const [entriesPerPage] = useState(10); 
 
-    // Filter holidays based on search and selected day
+    
     const filteredHolidays = holidays.filter((holiday) => {
         const matchesSearch =
             holiday.holiday.toLowerCase().includes(searchTerm.toLowerCase()) ||

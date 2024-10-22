@@ -18,7 +18,7 @@ const Expenses = () => {
     const [transactions] = useState(initialTransactions);
     const [searchTerm, setSearchTerm] = useState('');
     const [currentPage, setCurrentPage] = useState(1);
-    const [entriesPerPage, setEntriesPerPage] = useState(10); // Default to show 10 entries
+    const [entriesPerPage, setEntriesPerPage] = useState(10); 
 
     const filteredTransactions = transactions.filter(transaction =>
         transaction.orderBy.toLowerCase().includes(searchTerm.toLowerCase())
@@ -59,10 +59,10 @@ const Expenses = () => {
                 </div>
             </div>
 
-            <div className="employee-list-container">
+            <div className="department-list-container ">
                 <div className="header">
                     <div className="entries-dropdown">
-                        <label htmlFor="entriesPerPage">Show Entries:</label>
+                        <label htmlFor="entriesPerPage">Show </label>
                         <select
                             id="entriesPerPage"
                             value={entriesPerPage}
@@ -72,6 +72,7 @@ const Expenses = () => {
                             <option value={10}>10</option>
                             <option value={20}>20</option>
                         </select>
+                        <label htmlFor="entriesPerPage"> Entries</label>
                     </div>
 
                     <div className="header-actions">

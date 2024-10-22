@@ -1,0 +1,30 @@
+
+
+.add-event {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #FFFFFF;
+    width: 439px;
+    height: 90px;
+    border-radius: 9px;
+    border: 1px solid #CFCFCF
+}
+.add-event-btn{
+    width: 394px;
+    height: 49px;
+    color:white;
+    border-radius: 9px;
+    outline: none;
+    border: none;
+    background: linear-gradient(90deg, #3106A5 0%, #AA6C5D 100%);
+}
+.add-event-botom-card{
+    width: 439px;
+    height: 467px;
+    margin-top: 10px;
+    background: #FFFFFF;
+    border-radius: 9px;
+    border: 1px solid #CFCFCF
+    
+}

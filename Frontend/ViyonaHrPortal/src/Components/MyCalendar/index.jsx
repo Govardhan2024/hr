@@ -23,13 +23,13 @@ const localizer = dateFnsLocalizer({
 const myEventsList = [
   {
     title: 'Conference',
-    start: new Date(2024, 9, 20, 10, 0), // October 20, 2024, 10:00 AM
-    end: new Date(2024, 9, 20, 12, 0), // October 20, 2024, 12:00 PM
+    start: new Date(2024, 9, 20, 10, 0), 
+    end: new Date(2024, 9, 20, 12, 0), 
   },
   {
     title: 'Meeting',
-    start: new Date(2024, 9, 21, 14, 0), // October 21, 2024, 2:00 PM
-    end: new Date(2024, 9, 21, 15, 0), // October 21, 2024, 3:00 PM
+    start: new Date(2024, 9, 21, 14, 0),
+    end: new Date(2024, 9, 21, 15, 0),
   },
 ];
 
@@ -40,7 +40,7 @@ const MyCalendar = () => (
       events={myEventsList}
       startAccessor="start"
       endAccessor="end"
-      style={{ height: 500 }}
+      style={{ height: 570 }}
     />
   </div>
 );

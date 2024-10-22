@@ -6,7 +6,7 @@
 .department-list-container {
     padding: 20px;
     background-color: #FFFFFF;
-    width: 1576px; /* Consider using responsive units */
+    width: 1076px; /* Consider using responsive units */
     height: 792px; /* Consider using responsive units */
     border: 1px solid #CFCFCF;
     border-radius: 9px;
@@ -38,21 +38,32 @@
     cursor: pointer;
 }
 
-.popup {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: rgba(0, 0, 0, 0.5);
-    display: flex;
-    justify-content: center;
-    align-items: center;
+
+.depinput{
+    width: 559px;
+    height: 30px;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: 400;
+    padding: 10px;
+    margin: 10px 0;
+    outline: none;
+    border: 0.7px solid #D9D9D9
+}
+.depinput2{
+    width: 266px;
+    height: 30px;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: 400;
+    padding: 10px;
+    outline: none;
+    margin: 10px 0;
+    border: 0.7px solid #D9D9D9
 }
 
-.popup-content {
-    background: white;
-    padding: 20px;
-    border-radius: 5px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-}
+@media only screen and (min-width: 1920px){
+    .department-list-container{
+      width: 95%;
+    }
+  }

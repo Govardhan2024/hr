@@ -20,6 +20,8 @@ import Attendence from './Components/Attendence';
 import Payments from './Components/Payments';
 import Expenses from './Components/Expenses';
 import Invoices from './Components/Invoices';
+import Employeesalary from './Components/Employesalary';
+import Users from './Components/Users';
 
 
 
@@ -66,6 +68,8 @@ const App = () => {
           <Route path="/admin/Payments" element={<ProtectedRoute element={  < Payments/>} requiredRole="admin" />} />
           <Route path="/admin/Expenses" element={<ProtectedRoute element={  <Expenses />} requiredRole="admin" />} />
           <Route path="/admin/Invoices" element={<ProtectedRoute element={  <Invoices />} requiredRole="admin" />} />
+          <Route path="/admin/Employeesalary" element={<ProtectedRoute element={  <Employeesalary />} requiredRole="admin" />} />
+          <Route path="/admin/Users" element={<ProtectedRoute element={  <Users />} requiredRole="admin" />} />
           <Route path='/unauthorised_access' element={<Unauthorized/>}/>
         </Routes>
       </div>

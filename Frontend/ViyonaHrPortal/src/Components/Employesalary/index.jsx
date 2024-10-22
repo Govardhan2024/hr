@@ -6,11 +6,11 @@ import 'react-toastify/dist/ReactToastify.css';
 import './index.css';
 
 const initialEmployees = [
-    { id: 1, name: 'John Gresham', phone: '123-456-7890', joinDate: '2024-01-01', role: 'Developer' },
+    { id: 1, name: 'John Doe', phone: '123-456-7890', joinDate: '2024-01-01', role: 'Developer' },
     { id: 2, name: 'Jane Smith', phone: '987-654-3210', joinDate: '2024-02-14', role: 'Designer' },
 ];
 
-const Employees = () => {
+const Employeesalary = () => {
     const [employees, setEmployees] = useState(initialEmployees);
     const [searchTerm, setSearchTerm] = useState('');
     const [currentPage, setCurrentPage] = useState(1);
@@ -44,33 +44,6 @@ const Employees = () => {
         pageNumbers.push(i);
     }
 
-    const handleAddEmployee = async (event) => {
-        event.preventDefault(); 
-
-        if (newEmployee.employeeName && newEmployee.employeePersonalEmail && newEmployee.employeePhoneNumber) {
-            try {
-                const response = await axios.post('http://127.0.0.1:8000/create-employee', newEmployee);
-                if (response.data) {
-                    const addedEmployee = { id: response.data.id, ...newEmployee };
-                    setEmployees([...employees, addedEmployee]);
-                    setShowPopup(false);
-                    resetNewEmployee();
-                    toast.success('Employee successfully added!');
-
-
-                    setTimeout(() => {
-                        window.location.reload();
-                    }, 1000);
-                }
-            } catch (error) {
-                console.error("There was an error creating the employee!", error);
-                toast.error('Error adding employee.');
-            }
-        } else {
-            toast.error('Please fill in all required fields.');
-        }
-    };
-
     const handleDeleteEmployee = (id) => {
         setEmployees(employees.filter(employee => employee.id !== id));
     };
@@ -86,6 +59,17 @@ const Employees = () => {
         setShowPopup(false);
         resetNewEmployee();
         toast.success('Employee details successfully updated!');
+    };
+
+    const handleSendPayslip = async (id, email) => {
+        try {
+            // Make an API call to send the payslip to the employee's email
+            await axios.post('http://127.0.0.1:8000/send-payslip', { employeeId: id, email });
+            toast.success(`Payslip sent to ${email}`);
+        } catch (error) {
+            console.error("Error sending payslip:", error);
+            toast.error('Error sending payslip.');
+        }
     };
 
     const resetNewEmployee = () => {
@@ -107,14 +91,14 @@ const Employees = () => {
         let intervalId;
 
         if (showPopup) {
-
+           
             intervalId = setInterval(() => {
-                window.location.reload();
-            }, 60000);
+                window.location.reload(); 
+            }, 60000); 
         }
 
         return () => {
-            clearInterval(intervalId);
+            clearInterval(intervalId); 
         };
     }, [showPopup]);
 
@@ -143,26 +127,17 @@ const Employees = () => {
                             <option value={5}>5</option>
                             <option value={10}>10</option>
                             <option value={20}>20</option>
-
                         </select>
                         <label htmlFor="entriesPerPage"> Entries</label>
                     </div>
 
-                    <div className="header-actions">
-                        <div className="btn-card">
-                            <button className="add-employee-button" onClick={() => setShowPopup(!showPopup)}>
-                                {showPopup ? 'X Close' : 'Add New'}
-                            </button>
-                        </div>
-                        <input
-                            type="text"
-                            className="search-bar"
-                            placeholder="Search employees..."
-                            value={searchTerm}
-                            onChange={(e) => setSearchTerm(e.target.value)}
-                        />
-
-                    </div>
+                    <input
+                        type="text"
+                        className="search-bar"
+                        placeholder="Search employees..."
+                        value={searchTerm}
+                        onChange={(e) => setSearchTerm(e.target.value)}
+                    />
                 </div>
 
                 <table className="table">
@@ -171,6 +146,7 @@ const Employees = () => {
                             <th>No.</th>
                             <th>Profile</th>
                             <th>Name</th>
+                            <th>EmployeID</th>
                             <th>Phone No.</th>
                             <th>Join Date</th>
                             <th>Role</th>
@@ -183,12 +159,17 @@ const Employees = () => {
                                 <td>{employee.id}</td>
                                 <td><img  className="td-img" src="../../../public/images/image (2).svg"/></td>
                                 <td>{employee.name}</td>
+                                <td>{employee.id}</td>
                                 <td>{employee.phone}</td>
                                 <td>{employee.joinDate}</td>
                                 <td>{employee.role}</td>
                                 <td>
+                                    <button className="send-payslip-button" onClick={() => handleSendPayslip(employee.id, employee.employeeWorkingEmail)}>
+                                        Payslip
+                                    </button>
                                     <button className="edit-button" onClick={() => handleEditEmployee(employee.id)}>Edit</button>
                                     <button className="delete-button" onClick={() => handleDeleteEmployee(employee.id)}>Delete</button>
+
                                 </td>
                             </tr>
                         ))}
@@ -213,93 +194,52 @@ const Employees = () => {
                 <div className="popup">
                     <div className="popup-content">
                         <h2 className="addhead">{newEmployee.id ? 'Edit Employee' : 'Add New Employee'}</h2>
-                        <div className="popupline"></div>
-                        <form onSubmit={newEmployee.id ? handleSaveEditEmployee : handleAddEmployee}>
-                            <div style={{ display: 'flex', gap: '10px', marginTop: '20px' }}>
-                                <input
-                                    className="addinput"
-                                    type="text"
-                                    placeholder="Employee Name"
-                                    value={newEmployee.employeeName}
-                                    onChange={(e) => setNewEmployee({ ...newEmployee, employeeName: e.target.value })}
-                                />
-                                <input
-                                    className="addinput"
-                                    type="email"
-                                    placeholder="Personal Email"
-                                    value={newEmployee.employeePersonalEmail}
-                                    onChange={(e) => setNewEmployee({ ...newEmployee, employeePersonalEmail: e.target.value })}
-                                />
-                            </div>
+                        <form onSubmit={newEmployee.id ? handleSaveEditEmployee : handleEditEmployee}>
+                            <div style={{ display:'flex',gap:'20px'}}>
                             <input
-                                className="addinput2"
-                                type="email"
-                                placeholder="Working Email"
-                                value={newEmployee.employeeWorkingEmail}
-                                onChange={(e) => setNewEmployee({ ...newEmployee, employeeWorkingEmail: e.target.value })}
+                                className="editinput"
+                                type="text"
+                                placeholder="Employee Name"
+                                value={newEmployee.employeeName}
+                                onChange={(e) => setNewEmployee({ ...newEmployee, employeeName: e.target.value })}
                             />
-                            <div style={{ display: 'flex', gap: '5px' }}>
-                                <input
-                                    className="addinput3"
-                                    type="text"
-                                    placeholder="Phone Number"
-                                    value={newEmployee.employeePhoneNumber}
-                                    onChange={(e) => setNewEmployee({ ...newEmployee, employeePhoneNumber: e.target.value })}
-                                />
-                                <input
-                                    className="addinput3"
-                                    type="date"
-                                    value={newEmployee.joinDate}
-                                    onChange={(e) => setNewEmployee({ ...newEmployee, joinDate: e.target.value })}
-                                />
-                                <input
-                                    className="addinput3"
-                                    type="text"
-                                    placeholder="Job Role"
-                                    value={newEmployee.jobrole}
-                                    onChange={(e) => setNewEmployee({ ...newEmployee, jobrole: e.target.value })}
-                                />
+                            <input
+                             className="editinput"   
+                                type="text"
+                                placeholder="Phone Number"
+                                value={newEmployee.employeePhoneNumber}
+                                onChange={(e) => setNewEmployee({ ...newEmployee, employeePhoneNumber: e.target.value })}
+                            />
                             </div>
-                            <div style={{ display: 'flex', gap: '10px' }}>
-                                <input
-                                    className="addinput"
-                                    type="text"
-                                    placeholder="Role"
-                                    value={newEmployee.role}
-                                    onChange={(e) => setNewEmployee({ ...newEmployee, role: e.target.value })}
-                                />
-
-                                <input
-                                    className="addinput"
-                                    type="password"
-                                    placeholder="Password"
-                                    value={newEmployee.password}
-                                    onChange={(e) => setNewEmployee({ ...newEmployee, password: e.target.value })}
-                                />
+                            <div style={{ display:'flex',gap:'20px',marginTop:'30px'}}>
+                            <input
+                             className="editinput"
+                                type="date"
+                                placeholder="Join Date"
+                                value={newEmployee.joinDate}
+                                onChange={(e) => setNewEmployee({ ...newEmployee, joinDate: e.target.value })}
+                            />
+                            <input
+                             className="editinput"
+                                type="text"
+                                placeholder="Role"
+                                value={newEmployee.role}
+                                onChange={(e) => setNewEmployee({ ...newEmployee, role: e.target.value })}
+                            />
                             </div>
-
-                            <div>
-                                <input
-                                    className="choosefile"
-                                    type="file"
-                                    accept="image/*"
-                                    onChange={(e) => setNewEmployee({ ...newEmployee, pictureUpload: e.target.files[0]?.name })}
-                                />
-                            </div>
-                            <div style={{ display: 'flex', justifyContent: 'flex-end', marginTop: "30px" }}>
-                                <button className="add-btn"
-                                    type="submit">
-                                    {newEmployee.id ? 'Save' : 'Add'}
-                                </button>
-                                <button className="close-btn" type="button" onClick={() => setShowPopup(false)}>Close</button>
-                            </div>
-
-                        </form>
+                            <div style={{display:'flex',justifyContent:'space-between',marginTop:'50px'}}>
+                        <button onClick={() => setShowPopup(false)}>Cancel</button>
+                        <button type="submit">{newEmployee.id ? 'Save Changes' : 'Add Employee'}</button>        
                     </div>
+                        </form>
+                        
+                    </div>  
                 </div>
             )}
+
+
         </div>
     );
 };
 
-export default Employees;
+export default Employeesalary;

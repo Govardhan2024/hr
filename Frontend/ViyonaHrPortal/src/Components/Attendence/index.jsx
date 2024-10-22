@@ -34,7 +34,7 @@ const Departments = () => {
         { name: "John Doe", attendance: generateAttendance(daysInCurrentMonth) },
         { name: "Jane Smith", attendance: generateAttendance(daysInCurrentMonth) },
         { name: "Alice Johnson", attendance: generateAttendance(daysInCurrentMonth) },
-        // Add more employee data as needed
+        
     ];
 
     return (

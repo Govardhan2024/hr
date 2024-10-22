@@ -52,17 +52,17 @@ const Payments = () => {
             <ToastContainer position="top-right" autoClose={3000} hideProgressBar={false} closeOnClick pauseOnHover draggable theme="colored" />
             <div className='dashboard-text'>
                 <div className="flex-dashboard-text">
-                    <h1 className="main-home-head">Transactions</h1>
+                    <h1 className="main-home-head">Payments</h1>
                 </div>
                 <div>
                     <p><span className="viyona-text">VIYONA</span> <span className="viyona-span">/ Dashboard</span></p>
                 </div>
             </div>
 
-            <div className="employee-list-container">
+            <div className="department-list-container ">
                 <div className="header">
                     <div className="entries-dropdown">
-                        <label htmlFor="entriesPerPage">Show Entries:</label>
+                        <label htmlFor="entriesPerPage">Show </label>
                         <select
                             id="entriesPerPage"
                             value={entriesPerPage}
@@ -72,6 +72,7 @@ const Payments = () => {
                             <option value={10}>10</option>
                             <option value={20}>20</option>
                         </select>
+                        <label htmlFor="entriesPerPage"> Entries</label>
                     </div>
 
                     <div className="header-actions">

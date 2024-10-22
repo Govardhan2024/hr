@@ -61,10 +61,10 @@ const Expenses = () => {
                 </div>
             </div>
 
-            <div className="employee-list-container">
+            <div className="department-list-container ">
                 <div className="header">
                     <div className="entries-dropdown">
-                        <label htmlFor="entriesPerPage">Show Entries:</label>
+                        <label htmlFor="entriesPerPage">Show </label>
                         <select
                             id="entriesPerPage"
                             value={entriesPerPage}
@@ -74,6 +74,7 @@ const Expenses = () => {
                             <option value={10}>10</option>
                             <option value={20}>20</option>
                         </select>
+                        <label htmlFor="entriesPerPage"> Entries</label>
                     </div>
 
                     <div className="header-actions">
