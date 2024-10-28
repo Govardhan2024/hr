@@ -17,13 +17,15 @@ const Events = () => {
           <p><span className="viyona-text">VIYONA</span> <span className="viyona-span">/ Dashboard</span></p>
         </div>
       </div>
-      <div style={{display:"flex",}} >
+      <div className="eventadmincontar">
+      <div style={{display:"flex",marginTop:30}} >
         <div className='calender'>
         <MyCalendar />
         </div>
         <div style={{marginLeft:'20px'}}>
         <Addeventform/>
         </div>  
+      </div>
       </div>
     </>
 

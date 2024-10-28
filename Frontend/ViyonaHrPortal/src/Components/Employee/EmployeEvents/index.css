@@ -1,9 +1,10 @@
-.calender{
+.Employecalender {
   width: 674px;
   height: 571px;
- 
+
 }
-.eventadmincontar{
+
+.main-addeventcontainer {
   width:1076px;
   height: 792px;
   border-radius: 9px;
@@ -11,16 +12,15 @@
   padding: 10px  10px;
   margin-top: 20px;
   border: 1px solid #CFCFCF
-
 }
 
 @media (min-width: 1920px) {
-  .calender{
+  .Employecalender {
     width: 1100px;
     height: 800px;
-   
+
   }
-  .eventadmincontar {
+  .main-addeventcontainer {
     width:97%;
    
   }
