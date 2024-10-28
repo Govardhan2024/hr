@@ -37,7 +37,7 @@ const AdminLogin = () => {
       if (data.role === 'admin') {
         navigate('/admin/dashboard');
       } else if (data.role === 'employee') {
-        navigate('/employee/Employeesidebar'); // Adjust this route as needed
+        navigate('/employee/dashboard'); // Adjust this route as needed
       } else {
         setError("Unauthorized role. Please contact the administrator.");
       }

@@ -1,13 +1,14 @@
 from fastapi import FastAPI
 
 from app.controllers.user_controller import router as user_router
+from app.controllers.holidays import router as holiday_router
 from fastapi.middleware.cors import CORSMiddleware
 
 
 app=FastAPI()
 origins = [
     "http://localhost:5173",  # Your React app's origin
-    # Add more origins if needed
+    # Add more origins if needed    
 ]
 
 # Add CORS middleware
@@ -23,3 +24,4 @@ async def Home():
     return {"message": "Welcome to the FastAPI User Registration API!"}
 
 app.include_router(user_router)
+app.include_router(holiday_router)

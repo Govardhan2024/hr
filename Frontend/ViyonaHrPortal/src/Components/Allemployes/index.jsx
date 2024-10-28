@@ -3,19 +3,17 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { Skeleton } from '@mui/material';
 import './index.css';
 
-const initialEmployees = [
-    { id: 1, name: 'John Gresham', phone: '123-456-7890', joinDate: '2024-01-01', role: 'Developer' },
-    { id: 2, name: 'Jane Smith', phone: '987-654-3210', joinDate: '2024-02-14', role: 'Designer' },
-];
 
 const Employees = () => {
-    const [employees, setEmployees] = useState(initialEmployees);
+    const [employees, setEmployees] = useState([]);
     const [searchTerm, setSearchTerm] = useState('');
     const [currentPage, setCurrentPage] = useState(1);
     const [entriesPerPage, setEntriesPerPage] = useState(10);
     const [showPopup, setShowPopup] = useState(false);
+    const [loading, setLoading] = useState(true);
     const [newEmployee, setNewEmployee] = useState({
         id: null,
         employeeName: '',
@@ -29,9 +27,29 @@ const Employees = () => {
         password: ''
     });
 
+    useEffect(() => {
+        // Fetch employees from the backend API
+        const fetchEmployees = async () => {
+            setLoading(true);
+            try {
+                const response = await axios.get('http://127.0.0.1:8000/get_all_employees');
+                setEmployees(response.data);
+            } catch (error) {
+                console.error("Error fetching employees:", error);
+                toast.error('Failed to load employees.');
+            }finally {
+                setLoading(false); // End loading
+            }
+        };
+
+        fetchEmployees();
+    }, []);
+
+    console.log(employees)
+
     const filteredEmployees = employees.filter(employee =>
-        employee.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        employee.phone.includes(searchTerm)
+        employee.employeeName.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        employee.employeePhoneNumber.includes(searchTerm)
     );
 
     const totalEntries = filteredEmployees.length;
@@ -71,8 +89,21 @@ const Employees = () => {
         }
     };
 
-    const handleDeleteEmployee = (id) => {
-        setEmployees(employees.filter(employee => employee.id !== id));
+    const handleDeleteEmployee = async (id) => {
+        try {
+            const response = await axios.delete(`http://127.0.0.1:8000/delete_employee/${id}`);
+            
+            if (response.status === 200) {
+                setEmployees(employees.filter(employee => employee.id !== id));
+                toast.success(response.data.message);
+            }
+        } catch (error) {
+            if (error.response && error.response.status === 404) {
+                toast.error('Employee not found');
+            } else {
+                toast.error('Failed to delete employee');
+            }
+        }
     };
 
     const handleEditEmployee = (id) => {
@@ -172,26 +203,46 @@ const Employees = () => {
                             <th>Profile</th>
                             <th>Name</th>
                             <th>Phone No.</th>
+                            <th>Email</th>
                             <th>Join Date</th>
                             <th>Role</th>
                             <th>Action</th>
                         </tr>
                     </thead>
                     <tbody>
-                        {currentEntries.map((employee) => (
+                    {loading ? (
+                        Array.from({ length: entriesPerPage }).map((_, index) => (
+                            <tr key={index}>
+                                <td><Skeleton width={10} /></td>
+                                <td><Skeleton width={150} /></td>
+                                <td><Skeleton width={100} /></td>
+                                <td><Skeleton width={100} /></td>
+                                <td><Skeleton width={100} /></td>
+                                <td><Skeleton width={100} /></td>
+                                <td><Skeleton width={100} /></td>
+                                <td><Skeleton width={100} /></td>
+                            </tr>
+                        ))
+                    ):
+                    (
+                        currentEntries.map((employee, index) => (
                             <tr key={employee.id}>
-                                <td>{employee.id}</td>
-                                <td><img  className="td-img" src="../../../public/images/image (2).svg"/></td>
-                                <td>{employee.name}</td>
-                                <td>{employee.phone}</td>
-                                <td>{employee.joinDate}</td>
-                                <td>{employee.role}</td>
+                                <td>{index + 1}</td>
+                                <td><img className="td-img" src="../../../public/images/image (2).svg" alt="Profile" /></td>
+                                <td>{employee.employeeName}</td>
+                                <td>{employee.employeePhoneNumber}</td>
+                                <td>{employee.employeeWorkingEmail}</td>
+                                <td>{new Date(employee.joinDate).toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' })}</td>
+
+                                <td>{employee.jobrole}</td>
                                 <td>
                                     <button className="edit-button" onClick={() => handleEditEmployee(employee.id)}>Edit</button>
                                     <button className="delete-button" onClick={() => handleDeleteEmployee(employee.id)}>Delete</button>
                                 </td>
                             </tr>
-                        ))}
+                        ))
+                    )
+                    }
                     </tbody>
                 </table>
 

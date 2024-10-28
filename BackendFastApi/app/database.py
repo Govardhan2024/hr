@@ -11,3 +11,4 @@ db = client['ViyonHr']
 # Specify the collection
 users_collection = db['users']  
 employees_collection = db['employees']
+holidays_collection=db['holidays']

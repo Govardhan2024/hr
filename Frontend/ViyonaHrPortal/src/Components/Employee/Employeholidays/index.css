@@ -145,6 +145,15 @@
 
 }
 
+.event-button{
+    width: 100px;
+    height: 30px;
+    margin-left: 10px;
+    border: none;
+    outline: none;
+    border-radius: 10px;
+
+}
 
 .header {
     display: flex;
@@ -241,17 +250,10 @@
     gap: 0px;
     border-radius: 5px ;
     border: 0.7px solid #D9D9D9
+   
+
 }
-.holidaytextarea{
-    width: 400px;
-    width: 0;
-    height: 0;
-    border: none;       
-    padding: 0;       
-    margin: 0;          
-    overflow: hidden;  
-    resize: none;   
-}
+
 
 
 

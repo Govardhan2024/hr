@@ -3,7 +3,7 @@ import { useState } from 'react';
 import './index.css';
 
 const holidays = [
-    { id: 1, day: 'Monday', date: '2024-01-01', holiday: 'New Year',reason:"" },
+    { id: 1, day: 'Monday', date: '2024-01-01', holiday: 'New Year' },
     // ...existing holidays
 ];
 
@@ -13,7 +13,7 @@ const Employeeholidays = () => {
     const [currentPage, setCurrentPage] = useState(1);
     const [entriesPerPage] = useState(10); 
     const [showModal, setShowModal] = useState(false);
-    const [newHoliday, setNewHoliday] = useState({ holiday: '', date: '', day: '',reason:'' });
+    const [newHoliday, setNewHoliday] = useState({ holiday: '', date: '', day: '' });
     // Filter and paginate holidays
     const filteredHolidays = holidays.filter((holiday) => {
         const matchesSearch =
@@ -41,10 +41,9 @@ const Employeeholidays = () => {
             day: newDay, 
             date: newHoliday.date, 
             holiday: newHoliday.holiday 
-      
         });
         setShowModal(false);
-        setNewHoliday({ holiday: '', date: '', day: '' ,reason:''});
+        setNewHoliday({ holiday: '', date: '', day: '' });
     };
 
     return (
@@ -162,13 +161,6 @@ const Employeeholidays = () => {
                             type="date"
                             value={newHoliday.date}
                             onChange={(e) => setNewHoliday({ ...newHoliday, date: e.target.value })}
-                        />
-                        <textarea
-                         type="reason"
-                         placeholder="Holiday reason"
-                         value={newHoliday.reason}
-                         className="holidaytextarea"
-                     
                         />
                         
                         </div>

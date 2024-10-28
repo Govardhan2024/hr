@@ -1,28 +1,38 @@
-from pydantic import BaseModel,EmailStr,constr
+from pydantic import BaseModel,EmailStr,constr,Field
 from datetime import datetime
 from typing import Optional
 from bson import ObjectId  
-
-
+ 
+ 
 class User(BaseModel):
     id:str=None
     userName:str
     email:EmailStr
     password:constr(min_length=8)
     role: str  
-
+ 
 class Login(BaseModel):
     email: EmailStr
     password: str
-        
+       
 class Employee(BaseModel):
+    id: Optional[str] = None  # Mark as Optional for database-generated IDs
     employeeName: str
     employeePersonalEmail: EmailStr
-    employeeWorkingEmail: EmailStr  # This will be used in the User model for login
-    employeePhoneNumber: constr(min_length=10, max_length=15)  # Validate phone number length
+    employeeWorkingEmail: EmailStr  
+    employeePhoneNumber: constr(min_length=10, max_length=15)
     joinDate: datetime
     jobrole: str
-    role:str
-    pictureUpload: Optional[str] = None  # Path to the uploaded picture file
-    createdOn: datetime = datetime.now()
-    password: constr(min_length=8)  # This will be used in the User model for login
+    role: str
+    pictureUpload: Optional[str] = None  
+    createdOn: datetime = Field(default_factory=datetime.now)  # Use default_factory for dynamic default
+    password: constr(min_length=8)
+
+class Holidays(BaseModel):
+    id: Optional[str] = None
+    leave_type: constr(min_length=3)  
+    start_date: datetime                
+    end_date: datetime                  
+    reason: str                         
+    status: str = Field(default="Approved")  
+    created_on: datetime = Field(default_factory=datetime.now) 
