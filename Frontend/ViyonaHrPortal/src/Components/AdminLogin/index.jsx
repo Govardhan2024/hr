@@ -21,6 +21,7 @@ const AdminLogin = () => {
       });
 
       const data = await response.json();
+      console.log(data)
 
       if (!response.ok) {
         console.log("Error response data:", data); // Log for debugging
@@ -32,6 +33,7 @@ const AdminLogin = () => {
       // Store the access token and user role in local storage
       localStorage.setItem('access_token', data.access_token);
       localStorage.setItem('userRole', data.role); // Store the user role
+      localStorage.setItem("userId",data.id)
 
       // Navigate based on user role
       if (data.role === 'admin') {

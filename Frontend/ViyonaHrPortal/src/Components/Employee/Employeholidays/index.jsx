@@ -86,7 +86,7 @@ const Employeeholidays = () => {
 
                    <div>
                    <div style={{marginLeft:150,marginBottom:10}}>
-                    <button onClick={() => setShowModal(true)} className="add-holiday-button">Add Holiday</button>
+                    <button onClick={() => setShowModal(true)} className="add-holiday-button">AddHoliday</button>
                     </div>
                     <input
                         type="text"

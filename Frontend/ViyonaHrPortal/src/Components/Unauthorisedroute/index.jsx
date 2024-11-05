@@ -1,5 +1,4 @@
-
-import './index.css'; 
+import "./index.css";
 
 const Unauthorized = () => {
   return (
@@ -8,7 +7,6 @@ const Unauthorized = () => {
       <p className="unauthorized-message">
         You do not have permission to view this page.
       </p>
-   
     </div>
   );
 };

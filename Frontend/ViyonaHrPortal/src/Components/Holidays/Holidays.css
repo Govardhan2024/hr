@@ -164,6 +164,49 @@
   padding: 10px; 
   text-align: left; 
 }
+
+.selectdate{
+  width: 542px;
+  height: 38px;
+  border-radius: 5px;
+  padding-left: 10px;
+  margin-top: 20px;
+  border: 0.7px solid #D9D9D9
+
+}
+
+.popup-buttons{
+  display: flex;
+  justify-content:end;
+  margin-top: 50px;
+  margin-right: 30px;
+}
+.submitbtn{
+  width: 68px;
+  height: 38px;
+  outline: none;
+  border: none;
+  border-radius: 7px;
+  background: linear-gradient(90deg, #3509A4 0%, #A96D5F 100%);
+
+}
+.popupcancletbtn{
+  width: 68px;
+  height: 38px;
+  outline: none;
+  border: none;
+  border-radius: 7px;
+}
+
+
+
+
+
+
+
+
+
+
 @media (max-width: 768px) {
   .header {
     flex-direction: column;

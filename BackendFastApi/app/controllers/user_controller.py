@@ -1,5 +1,5 @@
 from fastapi import FastAPI, APIRouter, HTTPException, Depends
-from app.models.users import User, Login, Employee
+from app.models.users import User, Login, Employee,UserResponse
 from app.database import users_collection, employees_collection
 from passlib.context import CryptContext
 from fastapi.security import OAuth2PasswordBearer
@@ -83,7 +83,7 @@ async def login(user: Login):
         data={"sub": db_user['email'], "role": db_user['role']}
     )
  
-    return {"access_token": access_token, "token_type": "bearer", "role": db_user['role']}
+    return {"access_token": access_token, "token_type": "bearer", "role": db_user['role'] ,"id":str(db_user['_id'])}
  
 @router.post('/create-employee')
 async def create_employee(employee: Employee):
@@ -145,8 +145,33 @@ async def get_all_employees():
        
     logging.info(f"Retrieved {len(employees)} employees.")
     return formatted_employees
- 
- 
+@router.get('/get_all_users', response_model=list[UserResponse])
+async def get_all_employees():
+    logging.info("Fetching all employees...")
+    
+    try:
+        employees = await users_collection.find().to_list(100)
+    except Exception as e:
+        logging.error(f"Error fetching employees: {e}")
+        raise HTTPException(status_code=500, detail="Internal Server Error")
+    
+    if not employees:
+        logging.warning("No employees found.")
+        return []  # Return an empty list if no employees found
+    
+    formatted_employees = [
+        {
+            'id': str(employee['_id']),
+            'userName': employee['userName'],
+            'email': employee['email'],
+            'role': employee['role'],
+        }
+        for employee in employees
+    ]
+    
+    logging.info(f"Retrieved {len(employees)} employees.")
+    return formatted_employees
+
 @router.delete('/delete_employee/{employee_id}')
 async def delete_employee(employee_id: str):
 

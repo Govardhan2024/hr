@@ -165,7 +165,7 @@ const Employeesalary = () => {
                                 <td>{employee.role}</td>
                                 <td>
                                     <button className="send-payslip-button" onClick={() => handleSendPayslip(employee.id, employee.employeeWorkingEmail)}>
-                                        Payslip
+                                        Download
                                     </button>
                                     <button className="edit-button" onClick={() => handleEditEmployee(employee.id)}>Edit</button>
                                     <button className="delete-button" onClick={() => handleDeleteEmployee(employee.id)}>Delete</button>

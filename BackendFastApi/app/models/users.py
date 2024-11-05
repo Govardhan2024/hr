@@ -10,7 +10,13 @@ class User(BaseModel):
     email:EmailStr
     password:constr(min_length=8)
     role: str  
- 
+class UserResponse(BaseModel):
+    id: Optional[str] = None
+    userName: str
+    email: EmailStr
+    role: str
+
+
 class Login(BaseModel):
     email: EmailStr
     password: str
@@ -35,4 +41,23 @@ class Holidays(BaseModel):
     end_date: datetime                  
     reason: str                         
     status: str = Field(default="Approved")  
-    created_on: datetime = Field(default_factory=datetime.now) 
+    created_on: datetime = Field(default_factory=datetime.now)
+
+class LeaveRequest(BaseModel):
+    leave_type: constr(min_length=3)
+    start_date: datetime
+    end_date: datetime
+    reason: str
+    status: str = Field(default="Pending")  # Default to 'Pending'
+    created_on: datetime = Field(default_factory=datetime.utcnow)  # Updated to use utcnow()
+
+class LeaveRequestResponse(BaseModel):
+    id: str
+    employee_id: str
+    employee_name: str
+    leave_type: str
+    start_date: datetime
+    end_date: datetime
+    reason: str
+    status: str
+    created_on: datetime = Field(default_factory=datetime.utcnow)  # Updated to use utcnow()

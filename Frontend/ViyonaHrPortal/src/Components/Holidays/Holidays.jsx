@@ -174,30 +174,33 @@ const Holidays = () => {
             {isPopupOpen && (
                 <div className="popup">
                     <div className="popup-content">
-                        <h2>Add Holiday</h2>
+                        <h2 style={{textAlign:'start'}}>Add Holiday</h2>
                         <form onSubmit={handleSubmit}>
-                            <label>
-                                Holiday Title:
+                           <div>
                                 <input
+                                className="selectdate"
+                                    placeholder="Holiday Name"
                                     type="text"
                                     value={holidayTitle}
                                     onChange={(e) => setHolidayTitle(e.target.value)}
                                     required
                                 />
-                            </label>
-                            <label>
-                                Holiday Date:
+                           
+                         
+                            
                                 <DatePicker
+                                    className="selectdate"
                                     selected={holidayDate}
                                     onChange={(date) => setHolidayDate(date)}
                                     required
                                     dateFormat="yyyy/MM/dd"
                                     placeholderText="Select a date"
                                 />
-                            </label>
+                                </div>
+                       
                             <div className="popup-buttons">
-                                <button type="submit">Submit</button>
-                                <button type="button" onClick={handleClosePopup}>
+                                <button className="submitbtn" type="submit">Submit</button>
+                                <button  className="popupcancletbtn" type="button" onClick={handleClosePopup}>
                                     Cancel
                                 </button>
                             </div>
